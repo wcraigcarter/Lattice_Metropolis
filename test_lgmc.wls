@@ -274,7 +274,9 @@ demoConfiguration = latticeGasRandomConfiguration[120, 160, 5000, 5000];
    "energyNearest" -> -1.0, "energyNextNearest" -> -0.4,
    "inverseTemperature" -> 2.0, "muOrange" -> -0.5, "muBlue" -> -0.5,
    "exchangeProbability" -> 0.1];
-Export[FileNameJoin[{DirectoryName[$InputFileName], "demo.png"}],
+(* export to an untracked name so routine test runs never dirty the
+   committed README figure (demo.png) *)
+Export[FileNameJoin[{DirectoryName[$InputFileName], "demo_latest.png"}],
   latticeGasConfigurationPlot[demoConfiguration, ImageSize -> 480]];
 Print["T5 demo plot exported;  counts after anneal: ",
   latticeGasSpeciesCounts[demoConfiguration]];
