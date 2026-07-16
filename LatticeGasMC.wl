@@ -79,9 +79,10 @@ BeginPackage["LatticeGasMC`"];
 
 latticeGasRandomConfiguration::usage =
   "latticeGasRandomConfiguration[nRows, nColumns, nOrangeAtoms, nBlueAtoms] \
-gives a zero-padded (nRows+2) x (nColumns+2) configuration with exactly \
-nOrangeAtoms +1's and nBlueAtoms -1's placed uniformly at random among the \
-real sites.";
+gives a zero-padded (nRows+2) x (nColumns+2) configuration with the \
+requested numbers of +1's and -1's placed uniformly at random among the \
+real sites.  Counts are clipped (orange first, then blue) so that at least \
+one vacancy always remains.";
 
 latticeGasMetropolisSweep::usage =
   "latticeGasMetropolisSweep[configuration, nAttempts, opts] performs \
@@ -185,18 +186,22 @@ Begin["`Private`"];
 nearestNeighborKernel     = {{0, 1, 0}, {1, 0, 1}, {0, 1, 0}};
 nextNearestNeighborKernel = {{1, 0, 1}, {0, 0, 0}, {1, 0, 1}};
 
+(* Requested counts are clipped rather than rejected, so interactive
+   callers (sliders) can pass any combination: orange is capped first, blue
+   fits into the remaining space, and at least one vacancy always survives
+   (vacancy-mediated dynamics needs one to be ergodic). *)
 latticeGasRandomConfiguration[nRows_Integer, nColumns_Integer,
-   nOrangeAtoms_Integer, nBlueAtoms_Integer] (*/;
-   nOrangeAtoms + nBlueAtoms <= nRows nColumns *):=
-   Module[{nBlueAtomsActual = Min[{nBlueAtoms, nRows nColumns-1}]},
+   nOrangeAtoms_Integer, nBlueAtoms_Integer] :=
+  Module[{nSites = nRows nColumns, nOrangeActual, nBlueActual},
+   nOrangeActual = Clip[nOrangeAtoms, {0, nSites - 1}];
+   nBlueActual = Clip[nBlueAtoms, {0, nSites - 1 - nOrangeActual}];
    ArrayPad[
-   Partition[
-    RandomSample[Join[
-      ConstantArray[1, nOrangeAtoms],
-      ConstantArray[-1, nBlueAtomsActual],
-      ConstantArray[0, nRows nColumns - nOrangeAtoms - nBlueAtoms]]],
-    nColumns], 1]
-    ];
+    Partition[
+     RandomSample[Join[
+       ConstantArray[1, nOrangeActual],
+       ConstantArray[-1, nBlueActual],
+       ConstantArray[0, nSites - nOrangeActual - nBlueActual]]],
+     nColumns], 1]];
 
 (* ListConvolve with no overhang on the padded array returns exactly the
    neighbor sum at each real site; the zero frame supplies the free boundary. *)
@@ -282,9 +287,17 @@ ImageSize->OptionValue[ImageSize],(*Frame->True,*)
  PlotRange->border]
 ];
 
+(* Counts only real sites (the padded frame would otherwise inflate the
+   vacancy sector), and uses a fixed sector order so colors stay correct
+   even when a species count is zero. *)
 Options[populationPie]={ImageSize-> 100};
-populationPie[configuration_, OptionsPattern[]]:= 
-PieChart[KeySort[Counts[Flatten[configuration]]],PlotStyle->{Blue,White,Orange},ImageSize->OptionValue[ImageSize],PerformanceGoal->"Speed"]
+populationPie[configuration_, OptionsPattern[]] :=
+ Module[{counts = latticeGasSpeciesCounts[configuration]},
+  PieChart[
+   {Labeled[counts["blue"], "blue"], Labeled[counts["vacancy"], "vacancy"],
+    Labeled[counts["orange"], "orange"]},
+   ChartStyle -> {RGBColor[0.25, 0.45, 0.85], White, Orange},
+   ImageSize -> OptionValue[ImageSize], PerformanceGoal -> "Speed"]]
 
 
 latticeGasOrderParameterPlot[configuration_,
