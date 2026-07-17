@@ -177,11 +177,13 @@ composite figures that share one legend among several \
 latticeGasPhaseMapPlot panels (pass those plots \"Legend\" -> False).";
 
 drawLattice::usage =
-  "drawLattice[configuration] returns a graphics object of a square lattice with orange and blue disks corresponding
-to +1 and -1 in the matrix configuration. Options: ImageSize->(Default 220)"
+  "drawLattice[configuration] returns a graphics object \
+of a square lattice with orange and blue disks corresponding
+to +1 and -1 in the matrix configuration. Options: ImageSize->(Default 220)";
 
 populationPie::usage =
-  "populationPie[configuration] returns a graphics object of a pie chart indicating the populations of +1,-1, and 0: Options: ImageSize->(Default 100)"
+  "populationPie[configuration] returns a graphics object of a pie chart indicating\
+ the populations of +1,-1, and 0: Options: ImageSize->(Default 100)";
 
 Begin["`Private`"];
 
@@ -247,7 +249,7 @@ latticeGasOrderParameterMaps[configuration_, smoothingRadius_Integer: 8] :=
    columnSigns = Table[(-1.)^j, {i, nRows}, {j, nColumns}];
    rowSigns = Table[(-1.)^i, {i, nRows}, {j, nColumns}];
    <|"composition" -> smoothedField[realSites, smoothingRadius],
-    "occupancy" -> smoothedField[Abs[realSites], smoothingRadius],
+    "occupancy" -> smoothedField[Abs[realSites], 4],
     "checkerboard" ->
      smoothedField[checkerboardSigns realSites, smoothingRadius],
     "stripeVertical" ->
@@ -255,13 +257,16 @@ latticeGasOrderParameterMaps[configuration_, smoothingRadius_Integer: 8] :=
     "stripeHorizontal" ->
      smoothedField[rowSigns realSites, smoothingRadius]|>];
 
+(*divergingColorFunction =
+  Blend[{RGBColor[0.25, 0.45, 0.85], White, Orange}, (# + 1)/2] &;*)
+  
 divergingColorFunction =
-  Blend[{RGBColor[0.25, 0.45, 0.85], White, Orange}, (# + 1)/2] &;
-
+  Blend[{RGBColor[0.25, 0.45, 0.85], White, Orange}, LogisticSigmoid[5(#)]] &;
+  
 (* occupancy lives in [0,1] and is not a signed order parameter: use a
    grayscale (white = vacant, dark = occupied) so it cannot be confused
    with the orange/blue composition scale *)
-occupancyColorFunction = GrayLevel[Abs[(1 - #)]^(1/2)] &;
+occupancyColorFunction = GrayLevel[Abs[(1 - #)]^(1/2)]&;
 
 style = Style[#,{FontSize->16, FontFamily->"Arial"}]&;
 
