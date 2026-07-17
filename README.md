@@ -126,6 +126,7 @@ attempts.
 | `test_lgmc.wls` | Validation suite and benchmarks (`wolframscript -file test_lgmc.wls`) |
 | `order_parameter_demo.wls` | Regenerates `order_parameters.png` and `phase_maps.png` from three simulated microstructures |
 | `readme_demo.wls` | Regenerates `demo.png`, the header figure |
+| `Physics_and_Explanations/` | [Field guide to observable phenomena](Physics_and_Explanations/Phenomena.md) — explanations, tested recipes, and verification script |
 
 ## Usage
 
