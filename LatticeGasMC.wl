@@ -158,6 +158,15 @@ configuration beside its five order-parameter maps on diverging scales \
 registries, yellow/turquoise for the stripe registries.  opts are passed \
 to ArrayPlot.";
 
+latticeGasOrderParameterMapPlot::usage =
+  "latticeGasOrderParameterMapPlot[configuration, mapName, smoothingRadius, \
+opts] shows a single order-parameter map -- mapName is \"composition\", \
+\"occupancy\", \"checkerboard\", \"stripeVertical\", or \
+\"stripeHorizontal\" -- as an ArrayPlot with that map's own diverging \
+color scale (blue/orange composition, green/red checkerboard registries, \
+yellow/turquoise stripe registries, grayscale occupancy).  opts are \
+passed to ArrayPlot (e.g. ImageSize -> s, default 360).";
+
 latticeGasPhaseMap::usage =
   "latticeGasPhaseMap[configuration, smoothingRadius, orderThreshold] \
 classifies every real site by its dominant local order parameter, returning \
@@ -188,6 +197,30 @@ to +1 and -1 in the matrix configuration. Options: ImageSize->(Default 220)";
 populationPie::usage =
   "populationPie[configuration] returns a graphics object of a pie chart indicating\
  the populations of +1,-1, and 0: Options: ImageSize->(Default 100)";
+
+smoothedField::usage =
+ "smoothedField[matrix_] returns a smoothed (local average) value of the matrix\
+   at each position";
+   
+checkerboardRed::usage = "Defined color for registry A of a checkerboard pattern";
+
+
+checkerboardGreen::usage = "Defined color for registry B of a checkerboard pattern";
+
+stripeTurquoise::usage = "Defined color for registry A of a stripe pattern";
+
+stripeYellow::usage = "Defined color for registry B of a stripe pattern";
+
+divergingColorFunction::usage = "divergingColorFunction[negativeColor, positiveColor] returns\
+  a color function to highlight phases"
+  
+compositionColorFunction::usage = "Color function for composition visualization";
+
+checkerboardColorFunction::usage = "Color function for checkerboard visualization";
+
+stripeColorFunction::usage = "Color function for stripe visualization"
+
+
 
 Begin["`Private`"];
 
@@ -290,6 +323,17 @@ mapColorFunctions = <|
    "checkerboard" -> checkerboardColorFunction,
    "stripeVertical" -> stripeColorFunction,
    "stripeHorizontal" -> stripeColorFunction|>;
+
+latticeGasOrderParameterMapPlot[configuration_, mapName_String,
+   smoothingRadius_Integer: 8, opts___] /;
+  KeyExistsQ[mapColorFunctions, mapName] :=
+  ArrayPlot[
+   latticeGasOrderParameterMaps[configuration, smoothingRadius][mapName],
+   opts,
+   ColorFunction -> mapColorFunctions[mapName],
+   ColorFunctionScaling -> False,
+   PlotRange -> If[mapName === "occupancy", {0, 1}, {-1, 1}],
+   Frame -> True, FrameTicks -> None, ImageSize -> 360];
 
 style = Style[#,{FontSize->16, FontFamily->"Arial"}]&;
 
