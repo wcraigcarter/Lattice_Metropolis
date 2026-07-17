@@ -151,7 +151,8 @@ the domains; values within smoothingRadius of the boundary are damped by \
 the zero padding.";
 
 latticeGasOrderParameterPlot::usage =
-  "latticeGasOrderParameterPlot[configuration, smoothingRadius, opts] shows \
+  "latticeGasOrderParameterPlot[configuration, smoothingRadius, opts] \
+(ImageSize -> s sets the size of each panel, default 220) shows \
 the configuration beside its five order-parameter maps on a blue-white-\
 orange diverging scale (-1 to +1).  opts are passed to ArrayPlot.";
 
@@ -167,7 +168,8 @@ latticeGasPhaseMapPlot::usage =
   "latticeGasPhaseMapPlot[configuration, smoothingRadius, orderThreshold, \
 opts] shows the phase map as a legended ArrayPlot: hue identifies the \
 phase, light vs dark shade the registry (antiphase) variant, gray is \
-disordered, white is vacancy.  opts are passed to ArrayPlot.";
+disordered, white is vacancy.  opts are passed to ArrayPlot \
+(e.g. ImageSize -> s, default 360); \"Legend\" -> False omits the legend.";
 
 latticeGasPhaseMapLegend::usage =
   "latticeGasPhaseMapLegend[] gives the phase-map SwatchLegend, for \
@@ -231,10 +233,10 @@ latticeGasConfigurationPlot[configuration_, opts___] :=
 (* Gaussian-smoothed staggered averages.  Multiplying by the sign pattern
    first maps each candidate phase onto a locally uniform field, which the
    smoothing then reads out; smoothing is done with zero padding, consistent
-   with the free boundary. *)
+   with the free boundary.  GaussianFilter is the separable (fast)
+   equivalent of ListConvolve[GaussianMatrix[r], ArrayPad[field, r]]. *)
 smoothedField[field_, smoothingRadius_] :=
-  ListConvolve[GaussianMatrix[smoothingRadius],
-   ArrayPad[field, smoothingRadius]];
+  GaussianFilter[field, smoothingRadius, Padding -> 0];
 
 latticeGasOrderParameterMaps[configuration_, smoothingRadius_Integer: 8] :=
   Module[{realSites, nRows, nColumns, checkerboardSigns, columnSigns,
@@ -300,24 +302,26 @@ populationPie[configuration_, OptionsPattern[]] :=
    ImageSize -> OptionValue[ImageSize], PerformanceGoal -> "Speed"]]
 
 
+(* ImageSize (default 220) sets the size of EACH panel, including the
+   drawLattice configuration panel; all other opts go to the ArrayPlots. *)
 latticeGasOrderParameterPlot[configuration_,
    smoothingRadius_Integer: 8, opts___] :=
   Module[{maps = latticeGasOrderParameterMaps[configuration,
-      smoothingRadius]},
+      smoothingRadius],
+    imageSize = ImageSize /. Flatten[{opts}] /. ImageSize -> 220},
    Grid[Partition[
      Join[
       {Labeled[
-      (*latticeGasConfigurationPlot[configuration, opts,  ImageSize -> 220]*)
-      drawLattice[configuration], 
-         labelName["configuration"], Top]},
+        drawLattice[configuration, ImageSize -> imageSize],
+        labelName["configuration"], Top]},
       Table[
        Labeled[ArrayPlot[maps[mapName], opts,
          ColorFunction -> If[mapName === "occupancy",
            occupancyColorFunction, divergingColorFunction],
          ColorFunctionScaling -> False,
          PlotRange -> If[mapName === "occupancy", {0, 1}, {-1, 1}],
-         Frame -> True, FrameTicks -> None, ImageSize -> 220],
-        labelName[mapName],Top],
+         Frame -> True, FrameTicks -> None, ImageSize -> imageSize],
+        labelName[mapName], Top],
        {mapName, {"composition", "occupancy", "checkerboard",
          "stripeVertical", "stripeHorizontal"}}]],
      3], Spacings -> {1, 1}]];
@@ -345,25 +349,42 @@ latticeGasPhaseMapLegend[] :=
   SwatchLegend[Lookup[Association[phaseMapColorRules],
     {1, 2, 3, 4, 5, 6, 7, 8, 9, 0}], phaseMapLabels];
 
+(* compiled per-site classifier: dominant order parameter -> phase code *)
+$latticeGasPhaseClassifier =
+  Compile[{{composition, _Real, 2}, {occupancy, _Real, 2},
+    {checkerboard, _Real, 2}, {stripeVertical, _Real, 2},
+    {stripeHorizontal, _Real, 2}, {orderThreshold, _Real}},
+   Module[{nRows = Length[composition],
+     nColumns = Length[First[composition]],
+     bestIndex, bestValue, bestMagnitude, magnitude},
+    Table[
+     If[occupancy[[i, j]] < 0.5, 0,
+      bestIndex = 1; bestValue = composition[[i, j]];
+      bestMagnitude = Abs[bestValue];
+      magnitude = Abs[checkerboard[[i, j]]];
+      If[magnitude > bestMagnitude,
+       bestIndex = 2; bestValue = checkerboard[[i, j]];
+       bestMagnitude = magnitude];
+      magnitude = Abs[stripeVertical[[i, j]]];
+      If[magnitude > bestMagnitude,
+       bestIndex = 3; bestValue = stripeVertical[[i, j]];
+       bestMagnitude = magnitude];
+      magnitude = Abs[stripeHorizontal[[i, j]]];
+      If[magnitude > bestMagnitude,
+       bestIndex = 4; bestValue = stripeHorizontal[[i, j]];
+       bestMagnitude = magnitude];
+      If[bestMagnitude < orderThreshold, 9,
+       2 bestIndex - If[bestValue > 0, 1, 0]]],
+     {i, nRows}, {j, nColumns}]],
+   CompilationTarget -> "C", RuntimeOptions -> "Speed"];
+
 latticeGasPhaseMap[configuration_, smoothingRadius_Integer: 8,
    Optional[orderThreshold_?NumericQ, 0.4]] :=
-  Module[{maps, composition, occupancy, checkerboard, stripeVertical,
-    stripeHorizontal, nRows, nColumns},
-   maps = latticeGasOrderParameterMaps[configuration, smoothingRadius];
-   composition = maps["composition"]; occupancy = maps["occupancy"];
-   checkerboard = maps["checkerboard"];
-   stripeVertical = maps["stripeVertical"];
-   stripeHorizontal = maps["stripeHorizontal"];
-   {nRows, nColumns} = Dimensions[composition];
-   Table[
-    Module[{values, dominantIndex},
-     If[occupancy[[i, j]] < 0.5, 0,
-      values = {composition[[i, j]], checkerboard[[i, j]],
-        stripeVertical[[i, j]], stripeHorizontal[[i, j]]};
-      dominantIndex = First[Ordering[Abs[values], -1]];
-      If[Abs[values[[dominantIndex]]] < orderThreshold, 9,
-       2 dominantIndex - If[values[[dominantIndex]] > 0, 1, 0]]]],
-    {i, nRows}, {j, nColumns}]];
+  Module[{maps = latticeGasOrderParameterMaps[configuration,
+      smoothingRadius]},
+   $latticeGasPhaseClassifier[maps["composition"], maps["occupancy"],
+    maps["checkerboard"], maps["stripeVertical"],
+    maps["stripeHorizontal"], orderThreshold]];
 
 latticeGasPhaseMapPlot[configuration_, smoothingRadius_Integer: 8,
    Optional[orderThreshold_?NumericQ, 0.4], opts___] :=
@@ -374,7 +395,7 @@ latticeGasPhaseMapPlot[configuration_, smoothingRadius_Integer: 8,
      latticeGasPhaseMap[configuration, smoothingRadius, orderThreshold],
      Sequence @@ arrayPlotOptions,
      ColorRules -> phaseMapColorRules,
-     Frame -> True, FrameTicks -> None];
+     Frame -> True, FrameTicks -> None, ImageSize -> 360];
    If[includeLegend, Legended[plot, latticeGasPhaseMapLegend[]], plot]];
 
 $latticeGasKernel = With[
