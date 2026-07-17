@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       154,          7]
-NotebookDataLength[     36518,        751]
-NotebookOptionsPosition[     35048,        716]
-NotebookOutlinePosition[     35441,        732]
-CellTagsIndexPosition[     35398,        729]
+NotebookDataLength[     39140,        803]
+NotebookOptionsPosition[     37671,        768]
+NotebookOutlinePosition[     38063,        784]
+CellTagsIndexPosition[     38020,        781]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -121,31 +121,35 @@ atom. The is can be thought of as the vapor pressure of blue\>\""}]}],
    3.993224702297303*^9}, 3.9932247708663483`*^9},
  CellLabel->"In[5]:=",ExpressionUUID->"719616f6-8359-4bf9-9e25-221f11df6e9e"],
 
-Cell[BoxData[{
- RowBox[{
-  RowBox[{"style", " ", "=", " ", 
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
    RowBox[{
-    RowBox[{"Style", "[", 
-     RowBox[{"#", ",", 
-      RowBox[{"{", 
-       RowBox[{
-        RowBox[{"FontSize", "->", "14"}], ",", 
-        RowBox[{"FontFamily", "->", "\"\<Arial\>\""}]}], "}"}]}], "]"}], 
-    "&"}]}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"disabledStyle", "=", 
+    RowBox[{"style", " ", "=", " ", 
+     RowBox[{
+      RowBox[{"Style", "[", 
+       RowBox[{"#", ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"FontSize", "->", "14"}], ",", 
+          RowBox[{"FontFamily", "->", "\"\<Arial\>\""}]}], "}"}]}], "]"}], 
+      "&"}]}], ";"}], "\[IndentingNewLine]", 
    RowBox[{
-    RowBox[{"Style", "[", 
-     RowBox[{"#", ",", 
-      RowBox[{"{", 
-       RowBox[{
-        RowBox[{"FontSize", "->", "14"}], ",", 
-        RowBox[{"FontFamily", "->", "\"\<Arial\>\""}], ",", 
-        RowBox[{"FontColor", "->", " ", 
-         RowBox[{"GrayLevel", "[", ".9", "]"}]}]}], "}"}]}], "]"}], "&"}]}], 
-  ";"}]}], "Input",
+    RowBox[{"disabledStyle", "=", 
+     RowBox[{
+      RowBox[{"Style", "[", 
+       RowBox[{"#", ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"FontSize", "->", "14"}], ",", 
+          RowBox[{"FontFamily", "->", "\"\<Arial\>\""}], ",", 
+          RowBox[{"FontColor", "->", " ", 
+           RowBox[{"GrayLevel", "[", ".9", "]"}]}]}], "}"}]}], "]"}], "&"}]}],
+     ";"}]}]}]], "Input",
  InitializationGroup->True,
- CellLabel->"In[6]:=",ExpressionUUID->"bf4bccb9-dbb2-4845-800b-e612e338462d"]
+ CellChangeTimes->{{3.993284493420467*^9, 
+  3.993284515069366*^9}},ExpressionUUID->"bf4bccb9-dbb2-4845-800b-\
+e612e338462d"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -346,9 +350,10 @@ Cell[BoxData[
                     RowBox[{"Dynamic", "[", "blueCount", "]"}], ",", 
                     RowBox[{"{", 
                     RowBox[{"1", ",", 
-                    RowBox[{"width", " ", "height"}], ",", "1"}], "}"}]}], 
-                    "]"}]}], "}"}], "\[IndentingNewLine]", "]"}], ",", 
-                    "\[IndentingNewLine]", 
+                    RowBox[{"Dynamic", "[", 
+                    RowBox[{"width", " ", "height"}], "]"}], ",", "1"}], 
+                    "}"}]}], "]"}]}], "}"}], "\[IndentingNewLine]", "]"}], ",",
+                     "\[IndentingNewLine]", 
                     RowBox[{"Row", "[", 
                     RowBox[{"{", 
                     RowBox[{
@@ -366,11 +371,52 @@ Cell[BoxData[
                     RowBox[{
                     RowBox[{"width", " ", "height"}], "-", " ", "blueCount"}],
                      "]"}], ",", "1"}], "}"}]}], "]"}]}], "}"}], 
-                    "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
-                   "}"}], "\[IndentingNewLine]", "]"}]}], 
-                "\[IndentingNewLine]", "}"}], "]"}]}], "\[IndentingNewLine]", 
-             "\[IndentingNewLine]", "}"}], "\[IndentingNewLine]", "]"}], ",", 
-           "\[IndentingNewLine]", 
+                    "\[IndentingNewLine]", "]"}], ",", "\[IndentingNewLine]", 
+                    
+                    RowBox[{"Dynamic", "[", 
+                    RowBox[{"Style", "[", 
+                    RowBox[{
+                    RowBox[{"StringJoin", "[", 
+                    RowBox[{"{", 
+                    RowBox[{"\"\<Vacancy Count: \>\"", ",", 
+                    RowBox[{"ToString", "[", 
+                    RowBox[{
+                    RowBox[{"width", " ", "height"}], " ", "-", " ", 
+                    "blueCount", " ", "-", "orangeCount"}], "]"}]}], "}"}], 
+                    "]"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"FontSize", "->", "14"}], ",", 
+                    RowBox[{"FontFamily", "->", "\"\<Arial\>\""}]}], "}"}]}], 
+                    " ", "]"}], "]"}]}], 
+                   RowBox[{"(*", 
+                    RowBox[{",", "\[IndentingNewLine]", 
+                    RowBox[{"Dynamic", "[", 
+                    RowBox[{"style", "[", 
+                    RowBox[{"\"\<Vacancy Count\>\"", ",", 
+                    RowBox[{"Dynamic", "[", 
+                    RowBox[{
+                    RowBox[{"width", " ", "height"}], " ", "-", " ", 
+                    "blueCount", " ", "-", "orangeCount"}], "]"}], ",", 
+                    "number"}], "]"}], "]"}]}], "*)"}], "\[IndentingNewLine]", 
+                   RowBox[{"(*", 
+                    RowBox[{"Dynamic", "[", 
+                    RowBox[{"numberedLabel", "[", 
+                    RowBox[{"\"\<Vacancy Count\>\"", ",", 
+                    RowBox[{"Dynamic", "[", 
+                    RowBox[{"With", "[", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"vc", " ", "=", " ", 
+                    RowBox[{
+                    RowBox[{"width", " ", "height"}], " ", "-", " ", 
+                    "blueCount", " ", "-", "orangeCount"}]}], "}"}], ",", 
+                    "vc"}], "]"}], "]"}], ",", "number"}], "]"}], "]"}], 
+                    "*)"}], "\[IndentingNewLine]", "}"}], 
+                  "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
+                "}"}], "]"}]}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+             "}"}], "\[IndentingNewLine]", "]"}], ",", "\[IndentingNewLine]", 
+           
            RowBox[{"Grid", "[", "\[IndentingNewLine]", 
             RowBox[{"{", "\[IndentingNewLine]", 
              RowBox[{
@@ -709,13 +755,19 @@ Cell[BoxData[
    3.99322364506663*^9, 3.9932237046690283`*^9}, {3.993223963400455*^9, 
    3.993223979882835*^9}, {3.993224547530011*^9, 3.9932245480558767`*^9}, {
    3.9932245998338413`*^9, 3.99322462864303*^9}, 3.993224764024666*^9, 
-   3.993270567026457*^9, {3.993270691059272*^9, 3.993270691437244*^9}},
- CellLabel->"In[9]:=",ExpressionUUID->"523a307e-a425-4e10-8581-d5280555b2e7"]
+   3.993270567026457*^9, {3.993270691059272*^9, 3.993270691437244*^9}, {
+   3.993283345114311*^9, 3.993283360832406*^9}, {3.9932837353376837`*^9, 
+   3.993283762307358*^9}, {3.9932838015083923`*^9, 3.993283802368165*^9}, {
+   3.993283958347007*^9, 3.993283975172871*^9}, {3.9932840661513453`*^9, 
+   3.9932841310712357`*^9}, {3.9932841719282713`*^9, 3.993284214750039*^9}, {
+   3.9932842573995447`*^9, 3.993284297271369*^9}, {3.993284395560758*^9, 
+   3.993284481387191*^9}, 3.993284543127512*^9},
+ CellLabel->"In[20]:=",ExpressionUUID->"523a307e-a425-4e10-8581-d5280555b2e7"]
 }, Open  ]]
 }, Open  ]]
 },
-WindowSize->{1344, 811},
-WindowMargins->{{88, Automatic}, {Automatic, 37}},
+WindowSize->{1264, 742},
+WindowMargins->{{67, Automatic}, {Automatic, 7}},
 FrontEndVersion->"15.0 for Mac OS X ARM (64-bit) (May 19, 2026)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"dcfbe1ac-0e24-4d79-a314-ade8eb725c9b"
@@ -745,12 +797,12 @@ Cell[2594, 80, 675, 15, 29, "Input",ExpressionUUID->"7903df13-ddee-440e-838e-81b
  InitializationGroup->True],
 Cell[3272, 97, 1294, 24, 131, "Input",ExpressionUUID->"719616f6-8359-4bf9-9e25-221f11df6e9e",
  InitializationGroup->True],
-Cell[4569, 123, 820, 24, 49, "Input",ExpressionUUID->"bf4bccb9-dbb2-4845-800b-e612e338462d",
+Cell[4569, 123, 958, 28, 70, "Input",ExpressionUUID->"bf4bccb9-dbb2-4845-800b-e612e338462d",
  InitializationGroup->True]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5426, 152, 166, 3, 53, "Subsection",ExpressionUUID->"fe7907fc-e073-42f5-a421-2695c3bf571e"],
-Cell[5595, 157, 29425, 555, 2623, "Input",ExpressionUUID->"523a307e-a425-4e10-8581-d5280555b2e7"]
+Cell[5564, 156, 166, 3, 53, "Subsection",ExpressionUUID->"fe7907fc-e073-42f5-a421-2695c3bf571e"],
+Cell[5733, 161, 31910, 603, 2705, "Input",ExpressionUUID->"523a307e-a425-4e10-8581-d5280555b2e7"]
 }, Open  ]]
 }, Open  ]]
 }

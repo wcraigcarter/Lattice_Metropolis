@@ -274,7 +274,10 @@ labelName = <|
 "composition"-> style["Composition"],
 "configuration"-> style["Microstructure"],
 "occupancy"-> style["Vacancy Content"],
-"checkerboard"-> style["Checkerboard Phase"],
+"checkerboard"-> Tooltip[style["Checkerboard Phase"],"Uses the Checkerboard order parameter. There\
+are two registries that are separated by half a checkerboard lattice parameter\
+(i.e., B-O-B-O-  or O-B-O-B) these are indicated by Orange and Blue, and the color intensity\
+is the magnitude of the order parameter"],
 "stripeVertical"->style["Stripes: Vertical"],
 "stripeHorizontal"->style["Stripes: Horizontal"]
 |>;
