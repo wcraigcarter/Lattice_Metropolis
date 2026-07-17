@@ -2,11 +2,13 @@
 Get[FileNameJoin[{DirectoryName[$InputFileName], "LatticeGasMC.wl"}]];
 SeedRandom[11];
 
-(* 1. decomposition: like atoms attract *)
+(* 1. decomposition: like atoms attract.  Positive chemical potentials
+   penalize vacancy formation, so the interfaces are only lightly
+   decorated with vacancies instead of fully wetted *)
 decomposition = latticeGasRandomConfiguration[200, 200, 16000, 16000];
 {decomposition, s} = latticeGasBulkExchangeSweep[decomposition, 3*10^7,
    "energyNearest" -> -1.0, "energyNextNearest" -> -0.4,
-   "inverseTemperature" -> 1.5, "muOrange" -> 0., "muBlue" -> 0.];
+   "inverseTemperature" -> 1.5, "muOrange" -> 1.0, "muBlue" -> 1.0];
 
 (* 2. checkerboard: unlike nearest neighbors preferred *)
 checkerboard = latticeGasRandomConfiguration[200, 200, 16000, 16000];

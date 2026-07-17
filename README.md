@@ -22,8 +22,9 @@ because it does not need mass transport.
 ![Coarsening demo](demo.png)
 
 *Demo: 120 × 160 lattice after 5 × 10⁷ moves with attractive like-atom bonds —
-orange and blue domains coarsening around vacancy channels, with atom exchange
-at the free boundary.*
+orange and blue domains coarsening, with a light decoration of vacancies at
+the domain boundaries and atom exchange with the gas at the free boundary.
+Regenerate with `readme_demo.wls`.*
 
 ## Model
 
@@ -124,6 +125,7 @@ attempts.
 | `LatticeGasMC.wl` | The package: compiled MC kernels plus setup, measurement, order-parameter, and plotting utilities |
 | `test_lgmc.wls` | Validation suite and benchmarks (`wolframscript -file test_lgmc.wls`) |
 | `order_parameter_demo.wls` | Regenerates `order_parameters.png` and `phase_maps.png` from three simulated microstructures |
+| `readme_demo.wls` | Regenerates `demo.png`, the header figure |
 
 ## Usage
 
@@ -257,8 +259,10 @@ for `energyNearest` < 0, checkerboard for `energyNearest` > 0 with
 
 **Phase map.** For lectures, `latticeGasPhaseMapPlot` condenses the five
 maps into one panel: each site is colored by whichever order parameter
-dominates locally — hue identifies the phase, light vs dark shade the
-registry variant — with gray where no order parameter reaches
+dominates locally — orange/blue for composition-rich regions, red/green for
+the checkerboard registries, turquoise/yellow for the stripe registries
+(saturated for vertical stripes, light for horizontal) — with gray where no
+order parameter reaches
 `orderThreshold` (default 0.4) and white where the occupancy is below ½.
 Domain walls appear as thin gray (disordered) bands between colored
 domains:

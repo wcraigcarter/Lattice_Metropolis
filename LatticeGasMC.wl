@@ -152,9 +152,11 @@ the zero padding.";
 
 latticeGasOrderParameterPlot::usage =
   "latticeGasOrderParameterPlot[configuration, smoothingRadius, opts] \
-(ImageSize -> s sets the size of each panel, default 220) shows \
-the configuration beside its five order-parameter maps on a blue-white-\
-orange diverging scale (-1 to +1).  opts are passed to ArrayPlot.";
+(ImageSize -> s sets the size of each panel, default 220) shows the \
+configuration beside its five order-parameter maps on diverging scales \
+(-1 to +1): blue/orange for composition, green/red for the checkerboard \
+registries, yellow/turquoise for the stripe registries.  opts are passed \
+to ArrayPlot.";
 
 latticeGasPhaseMap::usage =
   "latticeGasPhaseMap[configuration, smoothingRadius, orderThreshold] \
@@ -166,10 +168,12 @@ order parameter reaches orderThreshold, default 0.4).";
 
 latticeGasPhaseMapPlot::usage =
   "latticeGasPhaseMapPlot[configuration, smoothingRadius, orderThreshold, \
-opts] shows the phase map as a legended ArrayPlot: hue identifies the \
-phase, light vs dark shade the registry (antiphase) variant, gray is \
-disordered, white is vacancy.  opts are passed to ArrayPlot \
-(e.g. ImageSize -> s, default 360); \"Legend\" -> False omits the legend.";
+opts] shows the phase map as a legended ArrayPlot: orange/blue mark \
+composition-rich regions, red/green the checkerboard registries, \
+turquoise/yellow the stripe registries (saturated = vertical stripes, \
+light = horizontal), gray is disordered, white is vacancy.  opts are \
+passed to ArrayPlot (e.g. ImageSize -> s, default 360); \
+\"Legend\" -> False omits the legend.";
 
 latticeGasPhaseMapLegend::usage =
   "latticeGasPhaseMapLegend[] gives the phase-map SwatchLegend, for \
@@ -257,16 +261,35 @@ latticeGasOrderParameterMaps[configuration_, smoothingRadius_Integer: 8] :=
     "stripeHorizontal" ->
      smoothedField[rowSigns realSites, smoothingRadius]|>];
 
-(*divergingColorFunction =
-  Blend[{RGBColor[0.25, 0.45, 0.85], White, Orange}, (# + 1)/2] &;*)
-  
-divergingColorFunction =
-  Blend[{RGBColor[0.25, 0.45, 0.85], White, Orange}, LogisticSigmoid[5(#)]] &;
-  
+(* Registry hues are deliberately different from the orange/blue atom
+   colors so registry domains cannot be mistaken for composition. *)
+checkerboardRed   = RGBColor[0.80, 0.20, 0.20];
+checkerboardGreen = RGBColor[0.13, 0.55, 0.13];
+stripeTurquoise   = RGBColor[0.10, 0.65, 0.65];
+stripeYellow      = RGBColor[0.90, 0.72, 0.05];
+
+(* the sigmoid sharpens contrast near zero, where the domain walls live *)
+divergingColorFunction[negativeColor_, positiveColor_] :=
+  Blend[{negativeColor, White, positiveColor}, LogisticSigmoid[5 #]] &;
+
+compositionColorFunction =
+  divergingColorFunction[RGBColor[0.25, 0.45, 0.85], Orange];
+checkerboardColorFunction =
+  divergingColorFunction[checkerboardGreen, checkerboardRed];
+stripeColorFunction =
+  divergingColorFunction[stripeYellow, stripeTurquoise];
+
 (* occupancy lives in [0,1] and is not a signed order parameter: use a
    grayscale (white = vacant, dark = occupied) so it cannot be confused
    with the orange/blue composition scale *)
 occupancyColorFunction = GrayLevel[Abs[(1 - #)]^(1/2)]&;
+
+mapColorFunctions = <|
+   "composition" -> compositionColorFunction,
+   "occupancy" -> occupancyColorFunction,
+   "checkerboard" -> checkerboardColorFunction,
+   "stripeVertical" -> stripeColorFunction,
+   "stripeHorizontal" -> stripeColorFunction|>;
 
 style = Style[#,{FontSize->16, FontFamily->"Arial"}]&;
 
@@ -276,7 +299,7 @@ labelName = <|
 "occupancy"-> style["Vacancy Content"],
 "checkerboard"-> Tooltip[style["Checkerboard Phase"],"Uses the Checkerboard order parameter. There\
 are two registries that are separated by half a checkerboard lattice parameter\
-(i.e., B-O-B-O-  or O-B-O-B) these are indicated by Orange and Blue, and the color intensity\
+(i.e., B-O-B-O-  or O-B-O-B) these are indicated by Red and Green, and the color intensity\
 is the magnitude of the order parameter"],
 "stripeVertical"->style["Stripes: Vertical"],
 "stripeHorizontal"->style["Stripes: Horizontal"]
@@ -324,8 +347,7 @@ latticeGasOrderParameterPlot[configuration_,
         labelName["configuration"], Top]},
       Table[
        Labeled[ArrayPlot[maps[mapName], opts,
-         ColorFunction -> If[mapName === "occupancy",
-           occupancyColorFunction, divergingColorFunction],
+         ColorFunction -> mapColorFunctions[mapName],
          ColorFunctionScaling -> False,
          PlotRange -> If[mapName === "occupancy", {0, 1}, {-1, 1}],
          Frame -> True, FrameTicks -> None, ImageSize -> imageSize],
@@ -334,17 +356,19 @@ latticeGasOrderParameterPlot[configuration_,
          "stripeVertical", "stripeHorizontal"}}]],
      3], Spacings -> {1, 1}]];
 
-(* phase map: hue = phase, light/dark shade = registry variant *)
+(* phase map: registry pairs use the same hues as the corresponding
+   order-parameter maps (red/green checkerboard, turquoise/yellow stripes);
+   vertical stripes are saturated, horizontal stripes light *)
 phaseMapColorRules = {
    0 -> White,                            (* vacancy region *)
    1 -> Orange,                           (* orange-rich *)
    2 -> RGBColor[0.25, 0.45, 0.85],       (* blue-rich *)
-   3 -> RGBColor[0.13, 0.55, 0.13],       (* checkerboard, registry A *)
-   4 -> RGBColor[0.62, 0.85, 0.50],       (* checkerboard, registry B *)
-   5 -> RGBColor[0.72, 0.15, 0.15],       (* vertical stripes, registry A *)
-   6 -> RGBColor[0.98, 0.62, 0.60],       (* vertical stripes, registry B *)
-   7 -> RGBColor[0.42, 0.22, 0.65],       (* horizontal stripes, registry A *)
-   8 -> RGBColor[0.80, 0.68, 0.90],       (* horizontal stripes, registry B *)
+   3 -> checkerboardRed,                  (* checkerboard, registry A *)
+   4 -> checkerboardGreen,                (* checkerboard, registry B *)
+   5 -> stripeTurquoise,                  (* vertical stripes, registry A *)
+   6 -> stripeYellow,                     (* vertical stripes, registry B *)
+   7 -> RGBColor[0.60, 0.87, 0.87],       (* horizontal stripes, registry A *)
+   8 -> RGBColor[0.98, 0.90, 0.55],       (* horizontal stripes, registry B *)
    9 -> GrayLevel[0.88]};                 (* disordered *)
 
 phaseMapLabels = {"orange-rich", "blue-rich",
