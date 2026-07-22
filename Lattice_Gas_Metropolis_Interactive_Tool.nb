@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       154,          7]
-NotebookDataLength[     39140,        803]
-NotebookOptionsPosition[     37671,        768]
-NotebookOutlinePosition[     38063,        784]
-CellTagsIndexPosition[     38020,        781]
+NotebookDataLength[     40621,        826]
+NotebookOptionsPosition[     39153,        791]
+NotebookOutlinePosition[     39544,        807]
+CellTagsIndexPosition[     39501,        804]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -31,7 +31,7 @@ Cell[BoxData[
      RowBox[{"NotebookDirectory", "[", "]"}], 
      ",", "\"\<LatticeGasMC.wl\>\""}], "}"}], "]"}], "]"}]], "Input",
  InitializationCell->True,
- CellLabel->"In[8]:=",ExpressionUUID->"69260781-064c-4425-8207-365194b7f6e8"],
+ CellLabel->"In[1]:=",ExpressionUUID->"69260781-064c-4425-8207-365194b7f6e8"],
 
 Cell[CellGroupData[{
 
@@ -76,7 +76,7 @@ Cell[BoxData[{
  CellChangeTimes->{{3.993207935793775*^9, 3.993207990352847*^9}, {
   3.99320804042334*^9, 3.9932080436475983`*^9}, {3.9932090500640383`*^9, 
   3.9932091012978497`*^9}, {3.9932096004814997`*^9, 3.993209600773121*^9}},
- CellLabel->"In[2]:=",ExpressionUUID->"7e632314-bb77-46b9-af53-8f3a8e5f4be4"],
+ CellLabel->"In[8]:=",ExpressionUUID->"7e632314-bb77-46b9-af53-8f3a8e5f4be4"],
 
 Cell[BoxData[
  RowBox[{
@@ -93,7 +93,7 @@ Cell[BoxData[
  CellChangeTimes->{{3.993208755359466*^9, 3.993208829029025*^9}, {
   3.99320892377353*^9, 3.993208949160269*^9}, {3.993209147410627*^9, 
   3.993209169402416*^9}},
- CellLabel->"In[4]:=",ExpressionUUID->"7903df13-ddee-440e-838e-81be6afd5234"],
+ CellLabel->"In[10]:=",ExpressionUUID->"7903df13-ddee-440e-838e-81be6afd5234"],
 
 Cell[BoxData[
  RowBox[{
@@ -119,7 +119,7 @@ atom. The is can be thought of as the vapor pressure of blue\>\""}]}],
  CellChangeTimes->{{3.9932235460382013`*^9, 3.993223591573092*^9}, {
    3.993223711421465*^9, 3.993223948382347*^9}, {3.993224654128379*^9, 
    3.993224702297303*^9}, 3.9932247708663483`*^9},
- CellLabel->"In[5]:=",ExpressionUUID->"719616f6-8359-4bf9-9e25-221f11df6e9e"],
+ CellLabel->"In[11]:=",ExpressionUUID->"719616f6-8359-4bf9-9e25-221f11df6e9e"],
 
 Cell[BoxData[
  RowBox[{"\[IndentingNewLine]", 
@@ -147,9 +147,8 @@ Cell[BoxData[
            RowBox[{"GrayLevel", "[", ".9", "]"}]}]}], "}"}]}], "]"}], "&"}]}],
      ";"}]}]}]], "Input",
  InitializationGroup->True,
- CellChangeTimes->{{3.993284493420467*^9, 
-  3.993284515069366*^9}},ExpressionUUID->"bf4bccb9-dbb2-4845-800b-\
-e612e338462d"]
+ CellChangeTimes->{{3.993284493420467*^9, 3.993284515069366*^9}},
+ CellLabel->"In[12]:=",ExpressionUUID->"bf4bccb9-dbb2-4845-800b-e612e338462d"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -166,7 +165,7 @@ Cell[BoxData[
     RowBox[{"DynamicModule", "[", "\[IndentingNewLine]", 
      RowBox[{
       RowBox[{"{", 
-       RowBox[{"graphic", ",", 
+       RowBox[{"graphic", ",", "config", ",", 
         RowBox[{"go", "=", "False"}], ",", "temperature", ",", "speed", ",", 
         RowBox[{"\[Mu]Blue", "=", "1"}], ",", "\[IndentingNewLine]", 
         RowBox[{"count", " ", "=", " ", "0"}], ",", 
@@ -205,7 +204,9 @@ Cell[BoxData[
            RowBox[{"drawLattice", "[", 
             RowBox[{"config", ",", 
              RowBox[{"ImageSize", "->", "800"}]}], "]"}], ",", 
-           RowBox[{"populationPie", "[", "config", "]"}]}], "}"}], "]"}]}], ";",
+           RowBox[{"populationPie", "[", 
+            RowBox[{"config", ",", 
+             RowBox[{"ImageSize", "->", "200"}]}], "]"}]}], "}"}], "]"}]}], ";",
         "\[IndentingNewLine]", 
        RowBox[{"popPie", " ", "=", " ", 
         RowBox[{"populationPie", "[", "config", "]"}]}], ";", 
@@ -316,7 +317,7 @@ Cell[BoxData[
                     RowBox[{"numberedLabel", "[", 
                     RowBox[{"\"\<Width\>\"", ",", "width", ",", "number"}], 
                     "]"}], "]"}], ",", 
-                    RowBox[{"Slider", "[", 
+                    RowBox[{"Manipulator", "[", 
                     RowBox[{
                     RowBox[{"Dynamic", "[", "width", "]"}], ",", 
                     RowBox[{"{", 
@@ -330,7 +331,7 @@ Cell[BoxData[
                     RowBox[{"numberedLabel", "[", 
                     RowBox[{"\"\<Height\>\"", ",", "height", ",", "number"}], 
                     "]"}], "]"}], ",", 
-                    RowBox[{"Slider", "[", 
+                    RowBox[{"Manipulator", "[", 
                     RowBox[{
                     RowBox[{"Dynamic", "[", "height", "]"}], ",", 
                     RowBox[{"{", 
@@ -345,7 +346,7 @@ Cell[BoxData[
                     
                     RowBox[{"\"\<Blue Count\>\"", ",", "blueCount", ",", 
                     "number"}], "]"}], "]"}], ",", 
-                    RowBox[{"Slider", "[", 
+                    RowBox[{"Manipulator", "[", 
                     RowBox[{
                     RowBox[{"Dynamic", "[", "blueCount", "]"}], ",", 
                     RowBox[{"{", 
@@ -362,7 +363,7 @@ Cell[BoxData[
                     
                     RowBox[{"\"\<Orange Count\>\"", ",", "orangeCount", ",", 
                     "number"}], "]"}], "]"}], ",", 
-                    RowBox[{"Slider", "[", 
+                    RowBox[{"Manipulator", "[", 
                     RowBox[{
                     RowBox[{"Dynamic", "[", "orangeCount", "]"}], ",", 
                     RowBox[{"{", 
@@ -417,83 +418,93 @@ Cell[BoxData[
                 "}"}], "]"}]}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
              "}"}], "\[IndentingNewLine]", "]"}], ",", "\[IndentingNewLine]", 
            
-           RowBox[{"Grid", "[", "\[IndentingNewLine]", 
-            RowBox[{"{", "\[IndentingNewLine]", 
+           RowBox[{"Dynamic", "@", 
+            RowBox[{"OpenerView", "[", 
              RowBox[{
-              RowBox[{"{", "\[IndentingNewLine]", 
+              RowBox[{"{", 
                RowBox[{
-                RowBox[{"Tooltip", "[", 
-                 RowBox[{
-                  RowBox[{"style", "[", "\"\<Speed\>\"", "]"}], ",", " ", 
-                  RowBox[{"toolTipText", "[", "\"\<Speed\>\"", "]"}]}], "]"}],
-                 ",", 
-                RowBox[{"Slider", "[", 
-                 RowBox[{
-                  RowBox[{"Dynamic", "[", "speed", "]"}], ",", 
-                  RowBox[{"{", 
-                   RowBox[{"1", ",", "100", ",", "5"}], "}"}]}], "]"}], ",", 
+                RowBox[{"style", "[", "\"\<Controls\>\"", "]"}], ",", 
                 "\[IndentingNewLine]", 
-                RowBox[{"Dynamic", "@", 
-                 RowBox[{"style", "@", 
-                  RowBox[{"StringJoin", "[", 
-                   RowBox[{"{", 
+                RowBox[{"Grid", "[", "\[IndentingNewLine]", 
+                 RowBox[{"{", "\[IndentingNewLine]", 
+                  RowBox[{
+                   RowBox[{"{", "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"Tooltip", "[", 
+                    RowBox[{
+                    RowBox[{"style", "[", "\"\<Speed\>\"", "]"}], ",", " ", 
+                    RowBox[{"toolTipText", "[", "\"\<Speed\>\"", "]"}]}], 
+                    "]"}], ",", 
+                    RowBox[{"Slider", "[", 
+                    RowBox[{
+                    RowBox[{"Dynamic", "[", "speed", "]"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"1", ",", "100", ",", "5"}], "}"}]}], "]"}], ",", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{"Dynamic", "@", 
+                    RowBox[{"style", "@", 
+                    RowBox[{"StringJoin", "[", 
+                    RowBox[{"{", 
                     RowBox[{"\"\<Temperature (\>\"", ",", 
                     RowBox[{"ToString", "[", "temperature", "]"}], 
                     ",", "\"\<)\>\""}], "}"}], "]"}]}]}], ",", 
-                RowBox[{"Slider", "[", 
-                 RowBox[{
-                  RowBox[{"Dynamic", "[", "temperature", "]"}], ",", 
-                  RowBox[{"{", 
-                   RowBox[{"0.1", ",", "5"}], "}"}]}], "]"}]}], 
-               "\[IndentingNewLine]", "}"}], ",", "\[IndentingNewLine]", 
-              RowBox[{"{", " ", 
-               RowBox[{"(*", 
-                RowBox[{"energy", " ", "coefficients"}], "*)"}], 
-               "\[IndentingNewLine]", 
-               RowBox[{
-                RowBox[{"Tooltip", "[", 
-                 RowBox[{
-                  RowBox[{"Dynamic", "@", 
-                   RowBox[{"numberedLabel", "[", 
+                    RowBox[{"Manipulator", "[", 
+                    RowBox[{
+                    RowBox[{"Dynamic", "[", "temperature", "]"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"0.1", ",", "5"}], "}"}]}], "]"}]}], 
+                    "\[IndentingNewLine]", "}"}], ",", "\[IndentingNewLine]", 
+                   
+                   RowBox[{"{", " ", 
+                    RowBox[{"(*", 
+                    RowBox[{"energy", " ", "coefficients"}], "*)"}], 
+                    "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"Tooltip", "[", 
+                    RowBox[{
+                    RowBox[{"Dynamic", "@", 
+                    RowBox[{"numberedLabel", "[", 
                     
                     RowBox[{"\"\<Nearest Neighbor Coefficient\>\"", ",", 
                     "energyNearest", ",", "numberPlusMinus"}], "]"}]}], ",", 
-                  RowBox[{
-                  "toolTipText", "[", "\"\<Nearest Neighbor\>\"", "]"}]}], 
-                 "]"}], ",", "\[IndentingNewLine]", "\[IndentingNewLine]", 
-                RowBox[{"Slider", "[", 
-                 RowBox[{
-                  RowBox[{"Dynamic", "[", "energyNearest", "]"}], ",", 
-                  RowBox[{"{", 
-                   RowBox[{
+                    RowBox[{
+                    "toolTipText", "[", "\"\<Nearest Neighbor\>\"", "]"}]}], 
+                    "]"}], ",", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+                    
+                    RowBox[{"Manipulator", "[", 
+                    RowBox[{
+                    RowBox[{"Dynamic", "[", "energyNearest", "]"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{
                     RowBox[{"-", "1"}], ",", "1", ",", ".01"}], "}"}]}], 
-                 "]"}], ",", "\[IndentingNewLine]", 
-                RowBox[{"Tooltip", "[", "\[IndentingNewLine]", 
-                 RowBox[{
-                  RowBox[{"Dynamic", "@", 
-                   RowBox[{"numberedLabel", "[", 
+                    "]"}], ",", "\[IndentingNewLine]", 
+                    RowBox[{"Tooltip", "[", "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"Dynamic", "@", 
+                    RowBox[{"numberedLabel", "[", 
                     
                     RowBox[{"\"\<Next Neighbor\>\"", ",", "energyNextNearest",
                      ",", "numberPlusMinus"}], "]"}]}], ",", 
-                  RowBox[{
-                  "toolTipText", "[", "\"\<Next Nearest Neighbor\>\"", 
-                   "]"}]}], "]"}], ",", "\[IndentingNewLine]", 
-                RowBox[{"Slider", "[", 
-                 RowBox[{
-                  RowBox[{"Dynamic", "[", "energyNextNearest", "]"}], ",", 
-                  RowBox[{"{", 
-                   RowBox[{
+                    RowBox[{
+                    "toolTipText", "[", "\"\<Next Nearest Neighbor\>\"", 
+                    "]"}]}], "]"}], ",", "\[IndentingNewLine]", 
+                    RowBox[{"Manipulator", "[", 
+                    RowBox[{
+                    RowBox[{"Dynamic", "[", "energyNextNearest", "]"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{
                     RowBox[{"-", "1"}], ",", "1"}], "}"}]}], "]"}]}], 
-               "\[IndentingNewLine]", "}"}], ",", "\[IndentingNewLine]", 
-              RowBox[{"{", " ", 
-               RowBox[{"(*", 
-                RowBox[{"chemical", " ", "potentials"}], "*)"}], 
-               "\[IndentingNewLine]", 
-               RowBox[{
-                RowBox[{"Tooltip", "[", "\[IndentingNewLine]", 
-                 RowBox[{
-                  RowBox[{"Dynamic", "[", "\[IndentingNewLine]", 
-                   RowBox[{"If", "[", 
+                    "\[IndentingNewLine]", "}"}], ",", "\[IndentingNewLine]", 
+                   
+                   RowBox[{"{", " ", 
+                    RowBox[{"(*", 
+                    RowBox[{"chemical", " ", "potentials"}], "*)"}], 
+                    "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"Tooltip", "[", "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"Dynamic", "[", "\[IndentingNewLine]", 
+                    RowBox[{"If", "[", 
                     RowBox[{
                     RowBox[{"evaporationCoefficient", "==", "0"}], "  ", ",", 
                     " ", 
@@ -505,80 +516,84 @@ Cell[BoxData[
                     
                     RowBox[{"\"\<Chemical Potential Blue\>\"", ",", 
                     "\[Mu]Blue", ",", "numberPlusMinus"}], "]"}]}]}], "]"}], 
-                   "]"}], ",", "\[IndentingNewLine]", 
-                  RowBox[{"toolTipText", "[", "\"\<\[Mu]Blue\>\"", "]"}]}], 
-                 "]"}], ",", "\[IndentingNewLine]", 
-                RowBox[{"Slider", "[", 
-                 RowBox[{
-                  RowBox[{"Dynamic", "[", "\[Mu]Blue", "]"}], ",", 
-                  RowBox[{"{", 
-                   RowBox[{
+                    "]"}], ",", "\[IndentingNewLine]", 
+                    RowBox[{"toolTipText", "[", "\"\<\[Mu]Blue\>\"", "]"}]}], 
+                    "]"}], ",", "\[IndentingNewLine]", 
+                    RowBox[{"Manipulator", "[", 
+                    RowBox[{
+                    RowBox[{"Dynamic", "[", "\[Mu]Blue", "]"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{
                     RowBox[{"-", "3"}], ",", "3"}], "}"}], ",", 
-                  RowBox[{"Enabled", ":>", " ", 
-                   RowBox[{"Dynamic", "[", 
+                    RowBox[{"Enabled", ":>", " ", 
+                    RowBox[{"Dynamic", "[", 
                     RowBox[{"evaporationCoefficient", "!=", " ", "0"}], " ", 
                     "]"}]}]}], "]"}], ",", "\[IndentingNewLine]", 
-                RowBox[{"Dynamic", "[", "\[IndentingNewLine]", 
-                 RowBox[{"If", "[", 
-                  RowBox[{
-                   RowBox[{"evaporationCoefficient", "==", "0"}], " ", ",", 
-                   " ", 
-                   RowBox[{
-                   "disabledStyle", "[", "\"\<Chemical Potential Orange\>\"", 
-                    "]"}], ",", 
-                   RowBox[{"Dynamic", "@", 
+                    RowBox[{"Dynamic", "[", "\[IndentingNewLine]", 
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{"evaporationCoefficient", "==", "0"}], " ", ",", 
+                    " ", 
+                    RowBox[{
+                    "disabledStyle", "[", "\"\<Chemical Potential Orange\>\"",
+                     "]"}], ",", 
+                    RowBox[{"Dynamic", "@", 
                     RowBox[{"numberedLabel", "[", 
                     
                     RowBox[{"\"\<Chemical Potential Orange\>\"", ",", 
                     "\[Mu]Orange", ",", "numberPlusMinus"}], "]"}]}]}], "]"}],
-                  "]"}], ",", "\[IndentingNewLine]", 
-                RowBox[{"Slider", "[", 
-                 RowBox[{
-                  RowBox[{"Dynamic", "[", "\[Mu]Orange", "]"}], ",", 
-                  RowBox[{"{", 
-                   RowBox[{
+                     "]"}], ",", "\[IndentingNewLine]", 
+                    RowBox[{"Manipulator", "[", 
+                    RowBox[{
+                    RowBox[{"Dynamic", "[", "\[Mu]Orange", "]"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{
                     RowBox[{"-", "3"}], ",", "3"}], "}"}], ",", 
-                  RowBox[{"Enabled", ":>", " ", 
-                   RowBox[{"Dynamic", "[", 
+                    RowBox[{"Enabled", ":>", " ", 
+                    RowBox[{"Dynamic", "[", 
                     RowBox[{"evaporationCoefficient", "!=", " ", "0"}], " ", 
                     "]"}]}]}], "]"}]}], "\[IndentingNewLine]", "}"}], ",", 
-              "\[IndentingNewLine]", 
-              RowBox[{"{", "\[IndentingNewLine]", 
-               RowBox[{
-                RowBox[{"Dynamic", "@", 
-                 RowBox[{"If", "[", 
-                  RowBox[{
-                   RowBox[{"mode", "===", "latticeGasMetropolisSweep"}], ",", 
-                   "\[IndentingNewLine]", " ", 
-                   RowBox[{"Dynamic", "@", 
+                   "\[IndentingNewLine]", 
+                   RowBox[{"{", "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"Dynamic", "@", 
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{"mode", "===", "latticeGasMetropolisSweep"}], ",",
+                     "\[IndentingNewLine]", " ", 
+                    RowBox[{"Dynamic", "@", 
                     RowBox[{"numberedLabel", "[", 
                     
                     RowBox[{"\"\<Evaporation Coefficient\>\"", ",", 
                     "evaporationCoefficient", ",", "number"}], "]"}]}], ",", 
-                   RowBox[{"style", "[", "\"\< \>\"", "]"}]}], "]"}]}], ",", 
-                "\[IndentingNewLine]", 
-                RowBox[{"Slider", "[", 
-                 RowBox[{
-                  RowBox[{"Dynamic", "[", "evaporationCoefficient", "]"}], ",", 
-                  RowBox[{"{", 
-                   RowBox[{"0", ",", "1"}], "}"}], ",", " ", 
-                  RowBox[{"Enabled", ":>", " ", 
-                   RowBox[{"Dynamic", "[", 
+                    RowBox[{"style", "[", "\"\< \>\"", "]"}]}], "]"}]}], ",", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{"Manipulator", "[", 
+                    RowBox[{
+                    RowBox[{"Dynamic", "[", "evaporationCoefficient", "]"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "1"}], "}"}], ",", " ", 
+                    RowBox[{"Enabled", ":>", " ", 
+                    RowBox[{"Dynamic", "[", 
                     RowBox[{"mode", "==", "latticeGasMetropolisSweep"}], " ", 
                     "]"}]}]}], "]"}], ",", "\[IndentingNewLine]", 
-                RowBox[{"Dynamic", "@", 
-                 RowBox[{"numberedLabel", "[", 
-                  
-                  RowBox[{"\"\<Occupied Pair Flip Frequency\>\"", ",", 
-                   "occupiedSwitchFrequency", ",", "number"}], "]"}]}], ",", 
-                "\[IndentingNewLine]", 
-                RowBox[{"Slider", "[", 
-                 RowBox[{
-                  RowBox[{"Dynamic", "[", "occupiedSwitchFrequency", "]"}], ",", 
-                  RowBox[{"{", 
-                   RowBox[{"0", ",", "1"}], "}"}]}], "]"}]}], 
-               "\[IndentingNewLine]", "}"}]}], "\[IndentingNewLine]", "}"}], 
-            "\[IndentingNewLine]", "]"}], ",", "\[IndentingNewLine]", 
+                    RowBox[{"Dynamic", "@", 
+                    RowBox[{"numberedLabel", "[", 
+                    
+                    RowBox[{"\"\<Occupied Pair Flip Frequency\>\"", ",", 
+                    "occupiedSwitchFrequency", ",", "number"}], "]"}]}], ",", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{"Manipulator", "[", 
+                    RowBox[{
+                    RowBox[{"Dynamic", "[", "occupiedSwitchFrequency", "]"}], 
+                    ",", 
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "1"}], "}"}]}], "]"}]}], 
+                    "\[IndentingNewLine]", "}"}]}], "\[IndentingNewLine]", 
+                  "}"}], "\[IndentingNewLine]", "]"}]}], 
+               "\[IndentingNewLine]", "}"}], ",", "\[IndentingNewLine]", 
+              "True"}], "\[IndentingNewLine]", "]"}]}], ",", 
+           "\[IndentingNewLine]", 
            RowBox[{"Row", "[", 
             RowBox[{"{", "\[IndentingNewLine]", 
              RowBox[{
@@ -605,7 +620,9 @@ Cell[BoxData[
                     RowBox[{"drawLattice", "[", 
                     RowBox[{"config", ",", 
                     RowBox[{"ImageSize", "->", "800"}]}], "]"}], ",", 
-                    RowBox[{"populationPie", "[", "config", "]"}]}], "}"}], 
+                    RowBox[{"populationPie", "[", 
+                    RowBox[{"config", ",", 
+                    RowBox[{"ImageSize", "->", "200"}]}], "]"}]}], "}"}], 
                     "]"}], ",", "\[IndentingNewLine]", "True", ",", 
                     "\[IndentingNewLine]", 
                     RowBox[{"latticeGasOrderParameterPlot", "[", 
@@ -663,12 +680,14 @@ Cell[BoxData[
                     RowBox[{"drawLattice", "[", 
                     RowBox[{"config", ",", 
                     RowBox[{"ImageSize", "->", "800"}]}], "]"}], ",", 
-                    RowBox[{"populationPie", "[", "config", "]"}]}], "}"}], 
+                    RowBox[{"populationPie", "[", 
+                    RowBox[{"config", ",", 
+                    RowBox[{"ImageSize", "->", "150"}]}], "]"}]}], "}"}], 
                     "]"}], ",", "\[IndentingNewLine]", "True", ",", 
                    "\[IndentingNewLine]", 
                    RowBox[{"latticeGasOrderParameterPlot", "[", 
                     RowBox[{"config", ",", "6", ",", 
-                    RowBox[{"ImageSize", "->", "300"}]}], "]"}]}], 
+                    RowBox[{"ImageSize", "->", "200"}]}], "]"}]}], 
                   "\[IndentingNewLine]", "]"}]}]}], "\[IndentingNewLine]", 
                ")"}], ",", "\[IndentingNewLine]", "True", ",", "graphic"}], 
              "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", "]"}]}], 
@@ -761,13 +780,17 @@ Cell[BoxData[
    3.993283958347007*^9, 3.993283975172871*^9}, {3.9932840661513453`*^9, 
    3.9932841310712357`*^9}, {3.9932841719282713`*^9, 3.993284214750039*^9}, {
    3.9932842573995447`*^9, 3.993284297271369*^9}, {3.993284395560758*^9, 
-   3.993284481387191*^9}, 3.993284543127512*^9},
- CellLabel->"In[20]:=",ExpressionUUID->"523a307e-a425-4e10-8581-d5280555b2e7"]
+   3.993284481387191*^9}, 3.993284543127512*^9, {3.993703800539666*^9, 
+   3.993703927016316*^9}, {3.993703992025261*^9, 3.993704037089038*^9}, {
+   3.993704072726819*^9, 3.993704078152279*^9}, {3.993704113147579*^9, 
+   3.9937041136642923`*^9}, {3.993704311182457*^9, 3.9937043130924788`*^9}, {
+   3.99370436200793*^9, 3.993704365359796*^9}},
+ CellLabel->"In[25]:=",ExpressionUUID->"523a307e-a425-4e10-8581-d5280555b2e7"]
 }, Open  ]]
 }, Open  ]]
 },
-WindowSize->{1264, 742},
-WindowMargins->{{67, Automatic}, {Automatic, 7}},
+WindowSize->{1349, 974},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
 FrontEndVersion->"15.0 for Mac OS X ARM (64-bit) (May 19, 2026)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"dcfbe1ac-0e24-4d79-a314-ade8eb725c9b"
@@ -783,7 +806,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[554, 20, 175, 3, 29, "Input",ExpressionUUID->"8183f33f-1ba0-4ab4-8fdd-9f15cb768ae2"],
+Cell[554, 20, 175, 3, 63, "Input",ExpressionUUID->"8183f33f-1ba0-4ab4-8fdd-9f15cb768ae2"],
 Cell[732, 25, 319, 8, 45, "Input",ExpressionUUID->"69260781-064c-4425-8207-365194b7f6e8",
  InitializationCell->True],
 Cell[CellGroupData[{
@@ -793,16 +816,16 @@ Cell[1384, 47, 192, 4, 53, "Subsection",ExpressionUUID->"c45b0706-26ea-47a4-a447
  InitializationGroup->True],
 Cell[1579, 53, 1012, 25, 111, "Input",ExpressionUUID->"7e632314-bb77-46b9-af53-8f3a8e5f4be4",
  InitializationGroup->True],
-Cell[2594, 80, 675, 15, 29, "Input",ExpressionUUID->"7903df13-ddee-440e-838e-81be6afd5234",
+Cell[2594, 80, 676, 15, 29, "Input",ExpressionUUID->"7903df13-ddee-440e-838e-81be6afd5234",
  InitializationGroup->True],
-Cell[3272, 97, 1294, 24, 131, "Input",ExpressionUUID->"719616f6-8359-4bf9-9e25-221f11df6e9e",
+Cell[3273, 97, 1295, 24, 131, "Input",ExpressionUUID->"719616f6-8359-4bf9-9e25-221f11df6e9e",
  InitializationGroup->True],
-Cell[4569, 123, 958, 28, 70, "Input",ExpressionUUID->"bf4bccb9-dbb2-4845-800b-e612e338462d",
+Cell[4571, 123, 977, 27, 70, "Input",ExpressionUUID->"bf4bccb9-dbb2-4845-800b-e612e338462d",
  InitializationGroup->True]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5564, 156, 166, 3, 53, "Subsection",ExpressionUUID->"fe7907fc-e073-42f5-a421-2695c3bf571e"],
-Cell[5733, 161, 31910, 603, 2705, "Input",ExpressionUUID->"523a307e-a425-4e10-8581-d5280555b2e7"]
+Cell[5585, 155, 166, 3, 53, "Subsection",ExpressionUUID->"fe7907fc-e073-42f5-a421-2695c3bf571e"],
+Cell[5754, 160, 33371, 627, 2766, "Input",ExpressionUUID->"523a307e-a425-4e10-8581-d5280555b2e7"]
 }, Open  ]]
 }, Open  ]]
 }

@@ -371,8 +371,8 @@ Options[populationPie]={ImageSize-> 100};
 populationPie[configuration_, OptionsPattern[]] :=
  Module[{counts = latticeGasSpeciesCounts[configuration]},
   PieChart[
-   {Labeled[counts["blue"], "blue"], Labeled[counts["vacancy"], "vacancy"],
-    Labeled[counts["orange"], "orange"]},
+   {Labeled[counts["blue"], Style["blue",{FontColor->LightGray,FontSize->12}]], Labeled[counts["vacancy"], Style["vacancy",{FontColor->LightGray,FontSize->12}]],
+    Labeled[counts["orange"], Style["orange",{FontColor->LightGray,FontSize->12}]]},
    ChartStyle -> {RGBColor[0.25, 0.45, 0.85], White, Orange},
    ImageSize -> OptionValue[ImageSize], PerformanceGoal -> "Speed"]]
 
