@@ -801,7 +801,7 @@ latticeGasBulkExchangeSweepCore[configuration_, energyNearest_,
 
 Options[latticeGasBulkExchangeSweep] = {"energyNearest" -> 1.,
    "energyNextNearest" -> 0., "muOrange" -> 0., "muBlue" -> 0.,
-   "inverseTemperature" -> 1., "exchangeProbability"->None};
+   "inverseTemperature" -> 1., "exchangeProbability"->None,"occupiedSwitchFrequency" -> 1.};
 
 latticeGasBulkExchangeSweep[configuration_, nAttempts_Integer,
    OptionsPattern[]] :=
@@ -814,3 +814,6 @@ latticeGasBulkExchangeSweep[configuration_, nAttempts_Integer,
 
 End[];
 EndPackage[];
+
+
+
