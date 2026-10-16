@@ -10,29 +10,94 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       154,          7]
-NotebookDataLength[     43874,        927]
-NotebookOptionsPosition[     41767,        882]
-NotebookOutlinePosition[     42161,        898]
-CellTagsIndexPosition[     42118,        895]
+NotebookDataLength[     83622,       1770]
+NotebookOptionsPosition[     80861,       1710]
+NotebookOutlinePosition[     81253,       1726]
+CellTagsIndexPosition[     81210,       1723]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
-Cell[BoxData[""], "Input",
- CellChangeTimes->{{3.993170477719923*^9, 3.993170521675012*^9}, 
-   3.993170552986981*^9},ExpressionUUID->"8183f33f-1ba0-4ab4-8fdd-\
-9f15cb768ae2"],
+
+Cell[CellGroupData[{
+Cell["reading in source", "Subsection",
+ CellChangeTimes->{{4.001146215555051*^9, 
+  4.0011462201369*^9}},ExpressionUUID->"29974920-e56b-4d34-bfd7-cd71f6f92af1"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"Get", "[", 
-  RowBox[{"FileNameJoin", "[", 
-   RowBox[{"{", 
-    RowBox[{
-     RowBox[{"NotebookDirectory", "[", "]"}], 
-     ",", "\"\<LatticeGasMC.wl\>\""}], "}"}], "]"}], "]"}]], "Input",
+ RowBox[{"Block", "[", "\[IndentingNewLine]", "    ", 
+  RowBox[{
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{"result", "=", 
+     RowBox[{"Get", "[", 
+      RowBox[{"FileNameJoin", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"NotebookDirectory", "[", "]"}], 
+         ",", "\"\<LatticeGasMC.wl\>\""}], "}"}], "]"}], "]"}]}], "}"}], ",", 
+   "\[IndentingNewLine]", "    ", 
+   RowBox[{
+    RowBox[{"If", "[", 
+     RowBox[{
+      RowBox[{"result", "===", "$Failed"}], ",", "\[IndentingNewLine]", 
+      "        ", 
+      RowBox[{
+       RowBox[{
+       "Echo", "[", "\"\<Local File Load LatticeGasMC.wl failed, trying to \
+download from Github\>\"", "]"}], ";", "\[IndentingNewLine]", "        ", 
+       RowBox[{"result", " ", "=", 
+        RowBox[{
+        "Get", "[", \
+"\"\<https://raw.githubusercontent.com/wcraigcarter/Lattice_Metropolis/master/\
+LatticeGasMC.wl\>\"", "]"}]}], ";"}]}], "\[IndentingNewLine]", "]"}], ";", 
+    "\[IndentingNewLine]", " ", 
+    RowBox[{"If", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"result", "===", "$Failed"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"Echo", "[", "\"\<Download failed\>\"", "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Echo", "[", "\"\<Github download succeeded\>\"", "]"}]}], 
+     "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", "result"}]}], 
+  "\[IndentingNewLine]", "   ", "]"}]], "Input",
  InitializationCell->True,
+ CellChangeTimes->{{4.001144606744261*^9, 4.001144684521061*^9}, {
+   4.001144714805379*^9, 4.001144762343401*^9}, {4.001146206054915*^9, 
+   4.00114623402702*^9}, 4.001146264209444*^9, {4.001146298474866*^9, 
+   4.001146316022902*^9}, {4.001146363097416*^9, 
+   4.001146419484354*^9}},ExpressionUUID->"69260781-064c-4425-8207-\
+365194b7f6e8"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Get", "noopen", 
+   "\"Cannot open \\!\\(\\*RowBox[{\\\"\\\\\\\"/Users/ccarter/MIT \
+Dropbox/Craig Carter/Projects/Lattice_Metropolis/atticeGasMC.wl\\\\\\\"\\\"}]\
+\\).\"", 2, 4, 5, 20821564771312814016, "Local"},
+  "MessageTemplate",
+  BaseStyle->"MSG"]], "Message",
+ CellChangeTimes->{{4.0011462789972153`*^9, 4.001146305182897*^9}, 
+   4.001146365177308*^9, 4.001146412898714*^9},
  CellLabel->
-  "In[2717]:=",ExpressionUUID->"69260781-064c-4425-8207-365194b7f6e8"],
+  "During evaluation of \
+In[4]:=",ExpressionUUID->"f756d503-95d1-4134-a720-04d98f943d9d"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["\<\"Local File Load LatticeGasMC.wl failed, trying to download \
+from Github\"\>"], "Echo",
+ CellChangeTimes->{
+  4.001146412957752*^9},ExpressionUUID->"6c93657f-c3cf-44d8-ac64-\
+93be9e9276d5"],
+
+Cell[BoxData["\<\"Github download succeeded\"\>"], "Echo",
+ CellChangeTimes->{
+  4.0011464138511353`*^9},ExpressionUUID->"c153930f-d29e-4371-aa8b-\
+aba1e3af95e0"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -77,8 +142,7 @@ Cell[BoxData[{
  CellChangeTimes->{{3.993207935793775*^9, 3.993207990352847*^9}, {
   3.99320804042334*^9, 3.9932080436475983`*^9}, {3.9932090500640383`*^9, 
   3.9932091012978497`*^9}, {3.9932096004814997`*^9, 3.993209600773121*^9}},
- CellLabel->
-  "In[2711]:=",ExpressionUUID->"7e632314-bb77-46b9-af53-8f3a8e5f4be4"],
+ CellLabel->"In[2]:=",ExpressionUUID->"7e632314-bb77-46b9-af53-8f3a8e5f4be4"],
 
 Cell[BoxData[
  RowBox[{
@@ -95,8 +159,7 @@ Cell[BoxData[
  CellChangeTimes->{{3.993208755359466*^9, 3.993208829029025*^9}, {
   3.99320892377353*^9, 3.993208949160269*^9}, {3.993209147410627*^9, 
   3.993209169402416*^9}},
- CellLabel->
-  "In[2713]:=",ExpressionUUID->"7903df13-ddee-440e-838e-81be6afd5234"],
+ CellLabel->"In[4]:=",ExpressionUUID->"7903df13-ddee-440e-838e-81be6afd5234"],
 
 Cell[BoxData[
  RowBox[{
@@ -122,8 +185,7 @@ atom. The is can be thought of as the vapor pressure of blue\>\""}]}],
  CellChangeTimes->{{3.9932235460382013`*^9, 3.993223591573092*^9}, {
    3.993223711421465*^9, 3.993223948382347*^9}, {3.993224654128379*^9, 
    3.993224702297303*^9}, 3.9932247708663483`*^9},
- CellLabel->
-  "In[2714]:=",ExpressionUUID->"719616f6-8359-4bf9-9e25-221f11df6e9e"],
+ CellLabel->"In[5]:=",ExpressionUUID->"719616f6-8359-4bf9-9e25-221f11df6e9e"],
 
 Cell[BoxData[
  RowBox[{"\[IndentingNewLine]", 
@@ -152,8 +214,7 @@ Cell[BoxData[
      ";"}]}]}]], "Input",
  InitializationGroup->True,
  CellChangeTimes->{{3.993284493420467*^9, 3.993284515069366*^9}},
- CellLabel->
-  "In[2715]:=",ExpressionUUID->"bf4bccb9-dbb2-4845-800b-e612e338462d"]
+ CellLabel->"In[6]:=",ExpressionUUID->"bf4bccb9-dbb2-4845-800b-e612e338462d"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -162,6 +223,8 @@ Cell["Interactive Widget", "Subsection",
  CellChangeTimes->{{3.993224731539484*^9, 
   3.993224759764452*^9}},ExpressionUUID->"fe7907fc-e073-42f5-a421-\
 2695c3bf571e"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"\[IndentingNewLine]", "\[IndentingNewLine]", 
@@ -532,8 +595,13 @@ Cell[BoxData[
                     RowBox[{"-", "3"}], ",", "3"}], "}"}], ",", 
                     RowBox[{"Enabled", ":>", " ", 
                     RowBox[{"Dynamic", "[", 
-                    RowBox[{"evaporationCoefficient", "!=", " ", "0"}], " ", 
-                    "]"}]}]}], "]"}], ",", "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"evaporationCoefficient", "!=", " ", "0"}], " ", "||",
+                     " ", 
+                    RowBox[{
+                    "mode", " ", "===", " ", 
+                    "latticeGasBulkExchangeSweep"}]}], " ", "]"}]}]}], "]"}], 
+                    ",", "\[IndentingNewLine]", 
                     RowBox[{"Dynamic", "[", "\[IndentingNewLine]", 
                     RowBox[{"If", "[", 
                     RowBox[{
@@ -556,9 +624,12 @@ Cell[BoxData[
                     RowBox[{"-", "3"}], ",", "3"}], "}"}], ",", 
                     RowBox[{"Enabled", ":>", " ", 
                     RowBox[{"Dynamic", "[", 
-                    RowBox[{"evaporationCoefficient", "!=", " ", "0"}], " ", 
-                    "]"}]}]}], "]"}]}], "\[IndentingNewLine]", "}"}], ",", 
-                   "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"evaporationCoefficient", "!=", " ", 
+                    RowBox[{"0", "mode"}]}], " ", "===", " ", 
+                    "latticeGasBulkExchangeSweep"}], " ", "]"}]}]}], "]"}]}], 
+                    "\[IndentingNewLine]", "}"}], ",", "\[IndentingNewLine]", 
+                   
                    RowBox[{"{", "\[IndentingNewLine]", 
                     RowBox[{
                     RowBox[{"Dynamic", "@", 
@@ -793,9 +864,763 @@ Cell[BoxData[
    3.993704072726819*^9, 3.993704078152279*^9}, {3.993704113147579*^9, 
    3.9937041136642923`*^9}, {3.993704311182457*^9, 3.9937043130924788`*^9}, {
    3.99370436200793*^9, 3.993704365359796*^9}, {3.993720729125351*^9, 
-   3.993720749243965*^9}, {3.993720787749091*^9, 3.99372079436979*^9}},
- CellLabel->
-  "In[324]:=",ExpressionUUID->"523a307e-a425-4e10-8581-d5280555b2e7"],
+   3.993720749243965*^9}, {3.993720787749091*^9, 3.99372079436979*^9}, {
+   4.001144554742106*^9, 4.0011445709359093`*^9}},
+ CellLabel->"In[13]:=",ExpressionUUID->"523a307e-a425-4e10-8581-d5280555b2e7"],
+
+Cell[BoxData[
+ FrameBox[
+  DynamicModuleBox[{$CellContext`graphic$$ = Row[{
+     Graphics[{{
+        RGBColor[1, 0.5, 0], 
+        Disk[CompressedData["
+1:eJwVxUV2w0gCAFCpSqwSM0MJzAyxY4wZ48wR+gJz/12//puf/fP///0DCIIQ
+GIL4b1BTNV1zNV8LNaqlWq6VWq212quDOqyjOq6TuqjLulE3607drXv1qJ7W
+s3pZf9f7+lAf61N9rq/1vX7UfzVdMZVYoUqqrMqunMqv0iqvcNWomlW7GlXj
+alrNqkW1rL6rbXWsztWlula36l49qmf1qt7Vb/Wp/ipQMiVbyqVVOmVYRmVc
+ZiUui7Is67JVtstO2Sv75bAcl1/lolyWq3JdbspdeSgv5bW8lffyVb7L3/JT
+/pWgYAqu4AtUSIVcKIVZ+EVYREVS5EVVtItO0S16Rb8YFMNiVEyLWbEq1sWh
+OBWX4lY8imfxKt7FXwEwxCzmsYgRlrCBXRzgEEc4xglOcY4xLnGNm7iNO3iI
+R3iMJ3iK5/gLL/ASr/Aab/Ae/+ADPuIzvuAHfuI3BjmVC7mYo1zK5VzPjdzL
+wzzKkzzLi7zMm3k77+S9vJ+P80k+zWf5Ot/k23yfH/JL/sx/808OMypjMiFD
+mZTJmZ7ZmZf5WZhFWZplGc6qrM4aWTPrZN2sl42ycTbJFtkyW2eH7JTds0f2
+zF4ZTKmUS/lUSMUUpVKqpXpqpk7qpkmapllapFVap820lbbTTtpL++kwHaXj
+dJrO0690k27Tn/SYntJLek3v6SN9p5+USdiES/hESFAiJ0qiJlpiJk7iJl7i
+J0GSJTgpkjJpJd1klIyTWTJPvpLvZJWsk02yT36SU3JOLsk1uSWPBMZUzMRs
+zMdCLMYolmMlVmMrtuMszmMcF3EVt+NOPIiH8Sgex1/xMv6OV/Em3sb7+Bif
+4nN8jW/xI37Gr/gdw4iOmIiNuEiIUCRFcqREWmRFduRGUZRFeVREjagVtaNx
+9B1to5/oGJ2ic3SJbtE9ekTP6BW9o9/oE/1FIKRCOmRCPhRCJVRDPbRDJ3RD
+L/TDMIzCOExDHBZhHTbDVtgOO2EvHIfL8DtchbvwEJ7Cc3gJ7+EjfIafEAQw
+YAI24AMhQIESaIEeGIEZOIEfhEES4KAIyqAOGkEn6Aa9oB8Mg1EwC+bBMvgO
+VsE62Aa7YB8cg1NwDi7BNbgHj+AdfIK/gPJpn/FZn/MlX/F13/N9P/YTP/Wx
+X/m13/I7ft8f+jN/7n/5S//bX/lrf+vv/L3/4x/8o3/yz/7Fv/o3/+4//Lf/
+8f984FEe7TEe64me4qme4Zme7Tme63me7wVe6MVe4mVe6VVe7TW8ltfxht7Y
+m3ozb+EtvbW38w7e0Tt5F+/m3b2Xx7qcK7rIVVzDNV3H9d3Mzd3Crd2W23X7
+7sAduRN36q7djbt3f9yDe3Rf7sf9c4EDHcZhHcFBjuTojun4TuhETuKkDnYK
+p+m0na7Tc/rOwBk6I2fmzJ2Fs3TWzsbZOjvn4Bydk3N1bs7T+XX+HGBTNm0z
+NmsLtmgjW7IVW7NN27JDO7ITO7ULu2G37Z7dtwf2yB7bM3tuf9lL+9te2xt7
+Z//YR/tkX+yr/bLf9sdmLd4SLNFClmKplmY5lmcFVmhFVmU1rK7Vs/rWwBpa
+c+vbWlkba2ftrR/rat2tp/Wy3tav9bH+LGDSJmeKJjIlUzFVUzN10zV9E5uF
+WZqVWZsNs2N2zZ7ZN4fmyJyYM3NuLsyluTV35t48m1fzZt7Nh/ky3+bHBAZn
+8IZoIEMyNMMybMMxXMM3EiM3SqMyaqNhNI2W0TcGxtAYGVNjbnwZC2NprI2N
+sTVuxt14G0CHOq2zOqcLuqgjXdU1XdcN3dRt3dN9PdQTPdVzHesNvaV39Z7e
+10f6WJ/qM32uf+kLfamv9LW+0bf6Xj/oR/2kP/S3/tH/dEpjNF4TNaRpmq5Z
+mq25mqf5WqwlWqrlGtZqraW1tb420MbaRJtqc22prbS1ttG22k7bawftqJ20
+s3bVHtpHAypUKZVWOVVVLdVWHdVVS7VWG2pLbatddaAO1Yk6Vefql7pQl+pa
+3ahbdace1Kt6U5/qW/1VgQIVWuEUXhEURdEUU7EUV/GURMmVQukoXaWn9JWB
+MlImylzZKGflolyVm3JXHsqv8lGADGVWRrIia7IuG7IpW7Iju7Inh3IuY7mQ
+S7mSm3Jb7shduScP5KE8lifyVJ7JX/JSXssb+SCf5LN8k+/yQ37Jb5mSaImR
+eEmUVEmXDMmRfCmWMglLldSSulJPGkgjaSrNpS9pIS2lb2kn7aWz9JEAgohF
+CElIQSrSkIls5CAX+ShAIYpQijKEUYFq1EBN1EJt1EV9NEBDNEFT9IWWaI1+
+0AGd0QVd0R090Au9ERChyIq8KIpIlEVF1ERdNEVLtMVAjMRYTMVcxGIp1mJD
+bIotsSv2xL44FEfiWJyKc/FLXIhbcS/+iAfxJF7Em3gXH+JT/BWBAAVK4AVB
+EAVJUAVNsARbcAVPCIRQiIRYSIRcwEIhVEItNISOMBTGwkRYCCthLeyFH+Eg
+HIWzcBPuwlP4CICHPM2zvMxrvM5bvM0HfMgnfMoXfMU3+Cbf4vv8gB/yI37M
+T/kFv+I3/Jbf8Xv+yF/4K3/jn/yL/+UBBzmGYzmeUziNMzmb87iIi7mES7mM
+w1zJNbgW1+Z6XJ8bcCNuys24L27Brbkt98MduCf35v44yDIsx/KswIosYiVW
+ZQ3WYm3WYV3WY0M2YVM2ZzFbsjXbZFtsm+2yQ3bETtgpO2Pn7I49sif2zF7Z
+B/tkX+yH/WM5RmAQIzEyYzIW4zIeEzMpkzOYqZiaaTItps30mD4zYIbMiBkz
+E2bKzJhvZs3smR/mwJyZB/NkAA1pidZogzZpm3Zojw7okI7omE5pTNd0g27R
+bbpDd+k+PaBn9IJe0Wt6Q+/oI32j7/SDftKQoiiG4iieEilESZRCqZRGGZRJ
+WZRNuZRHxVRKZVROVVRNdage1acG1JAaUWNqQk2pOfVNrakNtaMO1JE6UWfq
+Qt2pB/WkfqkPBSANWchBASIoQRmqUIcmdKALIxjDBKYwgzksYQVr2IQt2IZd
+2IcDOIQjOIELuITfcAXXcAt38Agv8AYf8Alf8Bd+IAAQUIAFHOCBCBDQgA5s
+EIIIpCAHGBSgAg3QBh3QBQMwAmMwAQvwDdZgA7bgAM7gCm7gAV7gDT4AkBQp
+kRqpkxbpkQEZkgmZkhmZkxVZky2yQ3bJPjkgh+SIHJMTckEuyRW5JjfklbyR
+D/JFfkhAQIIjREIiZEIjdCIgQiIiEiIjMFEQDaJJtIkO0SV6xJAYEWNiTqyI
+NbEhjsSJOBMX4krciQfxJj7Ev0/DdJ4=
+         "], 0.45]}, {
+        RGBColor[0, 0, 1], 
+        Disk[CompressedData["
+1:eJwVxVd2wrgCAFA3ucuWLRe5dxsIISQQSiD0Hupbwmzg7f9vztyfm/3z///9
+w1AUlfAU9d9swzdCozRmgxurcRq3IY3fpE3W5E3R1E2neWs+mn7z2QyaYTNu
+Js20mTe/zaJZNqtm0xybc3Ntbs29eTZMzdVCLdZSLddardeoNmqzxrVVk9qr
+gzqsozqukzqry7qq67qpO3W37tUfdb/+rIf1uJ7U8/q3XtSrel1v6m29r9mK
+q0AlVlIlV0qlVrDSK1QZlVnhyqpI5VV+FVRJlVZ5VVetql29V1/VsPquRtW4
+mlXLal3tq0P1V10rtuRKUAqlXColKo3SLHFpl07plqT0yqCMy7TMyqIsy6ps
+ylbZKQflsByXk3Ja/pSzclmuynW5KXfloTyVl/JRPkuuAAVfiIVcaIVeoMIo
+rMIunMItvCIryqIuWkWneC96xUfRL0bFrFgWq2JfnIpzcSluxaN4Fq+CzUHO
+50Iu5lKu5yg3ciu3cycnuZ8HeZrneZHXeZO38k7+nvfzz/wrH+eTfJr/5LN8
+nq/yTb7L9/khP+Xn/JL/5bf8nr9yJgOZkImZlCmZnqEMZ1ZmZ25GsiCLsyTL
+szLrZG/ZR9bPPrNRNs4m2SybZ4tsma2zTbbLDtkxO2Xn7J49smf2ypgUpHwq
+pFqqpyjFqZ06qZ8GaZhGaZzmaZFWaSt9T/vpMB2l0/QnnaXz9Dddpet0mx7S
+c3pNb+kjfaVMwiZcAhIlgYmZ4MROnCRMoiROkiRN8qROmqSVtJO3pJv0ko+k
+n3wmw+Q7mSY/yTJZJdtkl1ySa3JL7skjeSavhInFGMZGbMY4tmI3JrEX+3EQ
+h3EUx3ESp3EVN3Erbsed+D3uxR/xMP6OR/E4nsa/8SrexNv4GF/iR/yMmYiL
+pEiJUGRGOLIiN/IiPwqiMIqjJEqjIqqiOmqidtSN3qNe9BH1o8/oKxpG39Eo
+GkeTaBrNo99oEa2idbSNThEbCqEYKqEawtAIcWiFdhiESZiFeViFddgK38OP
+sB9+hl/hMByF43ASTsPfcBEuw3W4CXfhKTyHt/AePsJXyAUgEAMlgIEWoMAO
+SBAEURAHaZAFeVAH7aATvAX9YBAMg+9gEkyDRbANzsE1uAWPgPElX/YVX/U1
+H/mGj33bd3zXJ37gh37kZ37ul37lt/y2/+a/+z2/73/5A3/of/tTf+Ff/Zv/
+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
+6kX9C15CdXQ=
+         "], 
+         Rational[1, 2]]}, {
+        FaceForm[], 
+        EdgeForm[
+         GrayLevel[0.85]], 
+        Rectangle[{1, -1}, {82, 40}]}}, ImageSize -> 800, 
+      PlotRange -> {{-1, 83}, {-1, 43}}], 
+     Graphics[{{}, {}, {{
+         Directive[
+          RGBColor[0.5, 0.5, 1.], 
+          EdgeForm[
+           Directive[
+            GrayLevel[0], 
+            Opacity[0.5]]]], {{{{{{}, {{
+                Directive[
+                 EdgeForm[
+                  Directive[
+                   GrayLevel[0], 
+                   Opacity[0.5]]], 
+                 RGBColor[0.25, 0.45, 0.85]], {
+                 
+                 Disk[{0, 0}, 1., {0.06479534848028967, 
+                  3.141592653589793}], {}}}, {
+                Directive[
+                 EdgeForm[
+                  Directive[
+                   GrayLevel[0], 
+                   Opacity[0.5]]], 
+                 GrayLevel[1]], {
+                 
+                 Disk[{0, 0}, 1., {-0.10602875205865514`, 
+                  0.06479534848028967}], {}}}, {
+                Directive[
+                 EdgeForm[
+                  Directive[
+                   GrayLevel[0], 
+                   Opacity[0.5]]], 
+                 RGBColor[1, 0.5, 0]], {
+                 
+                 Disk[{0, 0}, 
+                  1., {-3.141592653589793, -0.10602875205865514`}], {}}}}}}}, \
+{}}, {{}}}}, {{{{{{{}, {
+               Text[
+                Style[
+                 Style[
+                 "blue", {
+                  FontColor -> GrayLevel[0.85], FontSize -> 
+                   12}], {}], {-0.02159467136948447, 
+                0.6663168275024189}]}}, {}}, {{{}, {
+               Text[
+                Style[
+                 Style[
+                 "vacancy", {
+                  FontColor -> GrayLevel[0.85], FontSize -> 12}], {}], {
+                0.6665249888875446, -0.013743494202819333`}]}}, {}}, {{{}, {
+               Text[
+                Style[
+                 Style[
+                 "orange", {
+                  FontColor -> GrayLevel[0.85], FontSize -> 
+                   12}], {}], {-0.03532636432589442, -0.6657300447087833}]}}, \
+{}}}, {}}}, {}}, {}, {}}, {{{}, {}}}, {{{{}, {}, {}, {}}}, {}}}, {
+      DisplayFunction -> Identity, PlotInteractivity :> $PlotInteractivity, 
+       DefaultBaseStyle -> {"PlotGraphics", "Graphics"}, GridLinesStyle -> 
+       Directive[
+         GrayLevel[0.5, 0.4]], ImageSize -> 150, 
+       PlotRange -> {{-1., 1.}, {-1., 1.}}, PlotRangePadding -> 
+       Scaled[0.05]}]}], $CellContext`config$$ = CompressedData["
+1:eJztlEGO5UYMQ9W5SbY5zhwhB0juv+r0LAwIzCNFp7OcAoz/XaWSSIry73/+
+/eOv32bmj6/nx/xa/+f6+Ho+v9bH+r/f9Vyfz7VG3tPdT1l7fyDO3aUYl5dq
+Ej46I54fS0fdTxwdnhTXcnC5dqz2ieLeau/wtI/6kXAl/u6McjpOhF1ruLnQ
+WbrquRqz8tFdh6XRkfRs5tJpq/mSX/e7zsn1bblmWPUijO7X1ds6Ji01j2JI
+/tvnjj/p6+o7bZL3EocLj8ZtTJv/hPMLK9XYuTXnNY9XPxueyY8ap/mprtvb
+OR4dCWfionOXMCT+VJO86zSg/TFnhG1gv/G8njsd3f03fne8kibJe+k74Px1
+zVdT94pXHS/9qF7q9aW/49DMU6NL2kvfkos7LfLjmN4nDyRO12oxN/NCdwjv
+NUPtXGwNZ26vNWfE9/LWFd/MqMu718D9NNdJP3qelXxGHMizpM3l42u+Ejen
+45gz5+dUr72/dXScEm/Hc8x/uu+wtnOc4pp7j58oztXQ/Vk5BnKkvlPe5IWk
+GeVzuNOey/9f59Vp4XT8WL/NDDiuDUaKdRpoTNPXhMv1QuuOweowbD8SvhbP
+G7ypTsvX3XMz1PDSGdc1BqP6sZ2rdtbdeesbl/uaOeVz6Ub7lw6KZ+vY1tD7
+jRZ03n473P9Wq/1OGiuXxjN6/9HRcW61ve5rPNWc4V47Hqm+9tfx/w4H5UOe
+cv+pX29wpHXNq6uZ9NH/LlfC3dQjHamWq5v6TvU0buC80dPVuTQgHnsOaE5c
+P/f71rHp6aUZ6dbu07yne1eu5KXvzDjdedY+V4+183Fxcvq73Nsv5J/LZ41H
+W41VE8I4Jq9iodXMm3rsWmkeSJ/Wlw5fwyVh+7lUR4cz9aLl5e67XBNwptlM
+ulxn6nWnuXIjHVOtdlZ0/8KfMF9z18zlngvyEtUhbHS+daQ+EA+n69WH5uxN
+fOPDy08Ot+NK6zt+bPyWvJk0cT5w2j2P81rTI+Lf+F5zXDpeuS5tncbtXssx
+3VcsKe4NDqdj8qDrLel/afxWG8Ke+jPDfBPehqPDQ350d9z9NKuEd+bfvHcu
+0ubqb8PV5XUeS/3WWNIxxRO+RxvSwfFK/BNvxzFhd7o2vU+c996zLvxt/5JO
+Ld/Lkzq76dsxEut0UUxJa9rbOjb6U66BvO6d8jbzkPx49dpxufS5uO01wiNp
+uvNpfsd9YM95y/FLdx2vawaSppQr9efBP4AradO8X1yT197ec150GjVzm/xP
+GLcfm3qEVT3XaPEGs9PHaTcr14Rarn+kQ8KlOrZ8nC4OD3FyPXP9oZh0n7BQ
+7EAuir321I+Eg3BpfcKQMCmfa663rtdsE95Gb8eVdPz5u3VTP1Iep8cM67MX
+6e1wXXq23wHCfsXSeZpF58df6/vrH+ACbSc=
+   "], $CellContext`go$$ = False, $CellContext`temperature$$ = 
+   0.1, $CellContext`speed$$ = 1, $CellContext`\[Mu]Blue$$ = 
+   1, $CellContext`count$$ = 602, $CellContext`evaporationCoefficient$$ = 
+   0.1, $CellContext`\[Mu]Orange$$ = 
+   1, $CellContext`energyNearest$$ = -1, $CellContext`energyNextNearest$$ = \
+-1, $CellContext`occupiedSwitchFrequency$$ = 0, $CellContext`popPie$$ = 
+   Graphics[{{}, {}, {{
+       Directive[
+        RGBColor[0.5, 0.5, 1.], 
+        EdgeForm[
+         Directive[
+          GrayLevel[0], 
+          Opacity[0.5]]]], {{{{{{}, {{
+              Directive[
+               EdgeForm[
+                Directive[
+                 GrayLevel[0], 
+                 Opacity[0.5]]], 
+               RGBColor[0.25, 0.45, 0.85]], {
+               
+               Disk[{0, 0}, 1., {0.009817477042467715, 
+                3.141592653589793}], {}}}, {
+              Directive[
+               EdgeForm[
+                Directive[
+                 GrayLevel[0], 
+                 Opacity[0.5]]], 
+               GrayLevel[1]], {
+               Disk[{0, 0}, 1., {-0.01570796326794932, 
+                0.009817477042467715}], {}}}, {
+              Directive[
+               EdgeForm[
+                Directive[
+                 GrayLevel[0], 
+                 Opacity[0.5]]], 
+               RGBColor[1, 0.5, 0]], {
+               
+               Disk[{0, 0}, 
+                1., {-3.141592653589793, -0.01570796326794932}], {}}}}}}}, \
+{}}, {{}}}}, {{{{{{{}, {
+             Text[
+              Style[
+               Style[
+               "blue", {
+                FontColor -> GrayLevel[0.85], FontSize -> 
+                 12}], {}], {-0.003272479205331823, 
+              0.6666586347781712}]}}, {}}, {{{}, {
+             Text[
+              Style[
+               Style[
+               "vacancy", {
+                FontColor -> GrayLevel[0.85], FontSize -> 12}], {}], {
+              0.6666637751830924, -0.001963492569785687}]}}, {}}, {{{}, {
+             Text[
+              Style[
+               Style[
+               "orange", {
+                FontColor -> GrayLevel[0.85], FontSize -> 
+                 12}], {}], {-0.005235933925807634, -0.6666461050965264}]}}, \
+{}}}, {}}}, {}}, {}, {}}, {{{}, {}}}, {{{{}, {}, {}, {}}}, {}}}, {
+    DisplayFunction -> Identity, PlotInteractivity :> $PlotInteractivity, 
+     DefaultBaseStyle -> {"PlotGraphics", "Graphics"}, GridLinesStyle -> 
+     Directive[
+       GrayLevel[0.5, 0.4]], ImageSize -> 100, 
+     PlotRange -> {{-1., 1.}, {-1., 1.}}, PlotRangePadding -> 
+     Scaled[0.05]}], $CellContext`width$$ = 80, $CellContext`height$$ = 
+   40, $CellContext`blueCount$$ = 1595, $CellContext`orangeCount$$ = 
+   1592, $CellContext`mode$$ = 
+   LatticeGasMC`latticeGasBulkExchangeSweep, \
+$CellContext`microstructureView$$ = True}, 
+   TagBox[GridBox[{
+      {
+       TemplateBox[{
+         StyleBox[
+         "\"Run/Pause: \"", {FontSize -> 14, FontFamily -> "Arial"}, 
+          StripOnInput -> False], 
+         ButtonBox[
+          DynamicBox[
+           ToBoxes[
+            If[$CellContext`go$$, "Running", "Paused"], StandardForm], 
+           ImageSizeCache -> {44.7763671875, {0.12060546875, 9.5595703125}}], 
+          Appearance -> Automatic, Background :> Dynamic[
+            If[$CellContext`go$$, 
+             RGBColor[0.8, 1, 0.8], 
+             RGBColor[1, 0.8, 0.8]]], 
+          ButtonFunction :> ($CellContext`go$$ = Not[$CellContext`go$$]), 
+          Evaluator -> Automatic, ImageSize -> {75, 25}, Method -> 
+          "Preemptive"], "\"\\t \\t\"", 
+         StyleBox[
+         "\"Mode: Surface/Bulk Exchange: \"", {
+          FontSize -> 14, FontFamily -> "Arial"}, StripOnInput -> False], 
+         FrameBox[
+          TogglerBox[
+           Dynamic[$CellContext`mode$$], {
+           LatticeGasMC`latticeGasMetropolisSweep -> 
+            StyleBox[
+             "\"Surface\"", StripOnInput -> False, FontFamily -> "Arial", 
+              FontSize -> 14], LatticeGasMC`latticeGasBulkExchangeSweep -> 
+            StyleBox[
+             "\"Bulk\"", StripOnInput -> False, FontFamily -> "Arial", 
+              FontSize -> 14]}, 
+           DynamicBox[
+            ToBoxes[$CellContext`mode$$, StandardForm], 
+            ImageSizeCache -> {210.60000000000008`, {2.912, 9.308}}]], 
+          Background -> RGBColor[0.87, 0.94, 1], StripOnInput -> False], 
+         DynamicBox[
+          ToBoxes[
+           Which[
+            And[$CellContext`evaporationCoefficient$$ == 0, 
+             
+             Not[$CellContext`mode$$ === 
+              LatticeGasMC`latticeGasBulkExchangeSweep]], 
+            $CellContext`style["\tClosed System (NVT)"], True, 
+            $CellContext`style["\tOpen System (VT)"]], StandardForm]], 
+         "\"\\t\\t\"", 
+         TagBox[
+          DynamicModuleBox[{Typeset`var$$ = False}, 
+           InterpretationBox[
+            StyleBox[
+             PaneSelectorBox[{False -> GridBox[{{
+                   OpenerBox[
+                    Dynamic[Typeset`var$$], Appearance -> Automatic, 
+                    AutoAction -> False, ContinuousAction -> False, Enabled -> 
+                    Automatic], 
+                   FrameBox[
+                    TemplateBox[{
+                    StyleBox[
+                    "\"Reset Parameters  \"", {
+                    FontSize -> 14, FontFamily -> "Arial"}, StripOnInput -> 
+                    False], 
+                    ButtonBox[
+                    "\"Reset\"", ButtonFunction :> 
+                    Dynamic[$CellContext`config$$ = 
+                    LatticeGasMC`latticeGasRandomConfiguration[$CellContext`\
+height$$, $CellContext`width$$, $CellContext`orangeCount$$, \
+$CellContext`blueCount$$]; $CellContext`graphic$$ = Row[{
+                    
+                    LatticeGasMC`drawLattice[$CellContext`config$$, ImageSize -> 
+                    800], 
+                    LatticeGasMC`populationPie[$CellContext`config$$]}]], 
+                    Background -> RGBColor[1, 1, 0.85], Appearance -> 
+                    Automatic, Evaluator -> Automatic, Method -> 
+                    "Preemptive"]}, "RowDefault"], StripOnInput -> False]}}, 
+                 AutoDelete -> False, BaselinePosition -> {1, 1}, 
+                 GridBoxAlignment -> {"Columns" -> {{Left}}}, 
+                 GridBoxBackground -> {"Columns" -> {{Automatic}}}, 
+                 GridBoxItemSize -> {
+                  "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+                 GridBoxSpacings -> {
+                  "Columns" -> {{0.2}}, "Rows" -> {{0.5}}}], True -> GridBox[{{
+                   OpenerBox[
+                    Dynamic[Typeset`var$$], Appearance -> Automatic, 
+                    AutoAction -> False, ContinuousAction -> False, Enabled -> 
+                    Automatic], 
+                   FrameBox[
+                    TemplateBox[{
+                    StyleBox[
+                    "\"Reset Parameters  \"", {
+                    FontSize -> 14, FontFamily -> "Arial"}, StripOnInput -> 
+                    False], 
+                    ButtonBox[
+                    "\"Reset\"", ButtonFunction :> 
+                    Dynamic[$CellContext`config$$ = 
+                    LatticeGasMC`latticeGasRandomConfiguration[$CellContext`\
+height$$, $CellContext`width$$, $CellContext`orangeCount$$, \
+$CellContext`blueCount$$]; $CellContext`graphic$$ = Row[{
+                    
+                    LatticeGasMC`drawLattice[$CellContext`config$$, ImageSize -> 
+                    800], 
+                    LatticeGasMC`populationPie[$CellContext`config$$]}]], 
+                    Background -> RGBColor[1, 1, 0.85], Appearance -> 
+                    Automatic, Evaluator -> Automatic, Method -> 
+                    "Preemptive"]}, "RowDefault"], StripOnInput -> False]}, {
+                  "", 
+                   PaneBox[
+                    TagBox[
+                    GridBox[{{
+                    TemplateBox[{
+                    DynamicBox[
+                    ToBoxes[
+                    $CellContext`numberedLabel[
+                    "Width", $CellContext`width$$, $CellContext`number], 
+                    StandardForm]], 
+                    TagBox[
+                    PaneBox[
+                    
+                    DynamicModuleBox[{
+                    Typeset`open$$ = False, Typeset`paused$$ = Automatic, 
+                    Typeset`running$$ = False, Typeset`index$$ = Automatic, 
+                    Typeset`rate$$ = Automatic, Typeset`dir$$ = Forward}, 
+                    StyleBox[
+                    DynamicBox[
+                    FEPrivate`FrontEndResource[
+                    "FEExpressions", "Manipulator06"][
+                    Dynamic[$CellContext`width$$], 
+                    Dynamic[$CellContext`width$$], {50, 200, 1}, Medium, 
+                    Small, Automatic, True, Automatic, False, True, True, All,
+                     False, {}, 
+                    Dynamic[Typeset`open$$], 
+                    Dynamic[Typeset`running$$], 
+                    Dynamic[Typeset`index$$], 
+                    Dynamic[Typeset`rate$$], 
+                    Dynamic[Typeset`dir$$]]], DynamicUpdating -> True], 
+                    DynamicModuleValues -> Automatic], ImageMargins -> 0, 
+                    BaselinePosition -> Baseline], 
+                    Manipulate`InterpretManipulator[
+                    Dynamic[$CellContext`width$$], {50, 200, 1}, {}]]}, 
+                    "RowDefault"]}, {
+                    TemplateBox[{
+                    DynamicBox[
+                    ToBoxes[
+                    $CellContext`numberedLabel[
+                    "Height", $CellContext`height$$, $CellContext`number], 
+                    StandardForm]], 
+                    TagBox[
+                    PaneBox[
+                    
+                    DynamicModuleBox[{
+                    Typeset`open$$ = False, Typeset`paused$$ = Automatic, 
+                    Typeset`running$$ = False, Typeset`index$$ = Automatic, 
+                    Typeset`rate$$ = Automatic, Typeset`dir$$ = Forward}, 
+                    StyleBox[
+                    DynamicBox[
+                    FEPrivate`FrontEndResource[
+                    "FEExpressions", "Manipulator06"][
+                    Dynamic[$CellContext`height$$], 
+                    Dynamic[$CellContext`height$$], {50, 200, 1}, Medium, 
+                    Small, Automatic, True, Automatic, False, True, True, All,
+                     False, {}, 
+                    Dynamic[Typeset`open$$], 
+                    Dynamic[Typeset`running$$], 
+                    Dynamic[Typeset`index$$], 
+                    Dynamic[Typeset`rate$$], 
+                    Dynamic[Typeset`dir$$]]], DynamicUpdating -> True], 
+                    DynamicModuleValues -> Automatic], ImageMargins -> 0, 
+                    BaselinePosition -> Baseline], 
+                    Manipulate`InterpretManipulator[
+                    Dynamic[$CellContext`height$$], {50, 200, 1}, {}]]}, 
+                    "RowDefault"]}, {
+                    TemplateBox[{
+                    DynamicBox[
+                    ToBoxes[
+                    $CellContext`numberedLabel[
+                    "Blue Count", $CellContext`blueCount$$, \
+$CellContext`number], StandardForm]], 
+                    TagBox[
+                    PaneBox[
+                    
+                    DynamicModuleBox[{
+                    Typeset`open$$ = False, Typeset`paused$$ = Automatic, 
+                    Typeset`running$$ = False, Typeset`index$$ = Automatic, 
+                    Typeset`rate$$ = Automatic, Typeset`dir$$ = Forward}, 
+                    StyleBox[
+                    DynamicBox[
+                    FEPrivate`FrontEndResource[
+                    "FEExpressions", "Manipulator06"][
+                    Dynamic[$CellContext`blueCount$$], 
+                    Dynamic[$CellContext`blueCount$$], {1, 
+                    Dynamic[$CellContext`width$$ $CellContext`height$$], 1}, 
+                    Medium, Small, Automatic, True, Automatic, False, True, 
+                    True, All, False, {}, 
+                    Dynamic[Typeset`open$$], 
+                    Dynamic[Typeset`running$$], 
+                    Dynamic[Typeset`index$$], 
+                    Dynamic[Typeset`rate$$], 
+                    Dynamic[Typeset`dir$$]]], DynamicUpdating -> True], 
+                    DynamicModuleValues -> Automatic], ImageMargins -> 0, 
+                    BaselinePosition -> Baseline], 
+                    Manipulate`InterpretManipulator[
+                    Dynamic[$CellContext`blueCount$$], {1, 
+                    Dynamic[$CellContext`width$$ $CellContext`height$$], 
+                    1}, {}]]}, "RowDefault"]}, {
+                    TemplateBox[{
+                    DynamicBox[
+                    ToBoxes[
+                    $CellContext`numberedLabel[
+                    "Orange Count", $CellContext`orangeCount$$, \
+$CellContext`number], StandardForm]], 
+                    TagBox[
+                    PaneBox[
+                    
+                    DynamicModuleBox[{
+                    Typeset`open$$ = False, Typeset`paused$$ = Automatic, 
+                    Typeset`running$$ = False, Typeset`index$$ = Automatic, 
+                    Typeset`rate$$ = Automatic, Typeset`dir$$ = Forward}, 
+                    StyleBox[
+                    DynamicBox[
+                    FEPrivate`FrontEndResource[
+                    "FEExpressions", "Manipulator06"][
+                    Dynamic[$CellContext`orangeCount$$], 
+                    Dynamic[$CellContext`orangeCount$$], {1, 
+                    
+                    Dynamic[$CellContext`width$$ $CellContext`height$$ - \
+$CellContext`blueCount$$], 1}, Medium, Small, Automatic, True, Automatic, 
+                    False, True, True, All, False, {}, 
+                    Dynamic[Typeset`open$$], 
+                    Dynamic[Typeset`running$$], 
+                    Dynamic[Typeset`index$$], 
+                    Dynamic[Typeset`rate$$], 
+                    Dynamic[Typeset`dir$$]]], DynamicUpdating -> True], 
+                    DynamicModuleValues -> Automatic], ImageMargins -> 0, 
+                    BaselinePosition -> Baseline], 
+                    Manipulate`InterpretManipulator[
+                    Dynamic[$CellContext`orangeCount$$], {1, 
+                    
+                    Dynamic[$CellContext`width$$ $CellContext`height$$ - \
+$CellContext`blueCount$$], 1}, {}]]}, "RowDefault"]}, {
+                    DynamicBox[
+                    ToBoxes[
+                    Style[
+                    StringJoin[{"Vacancy Count: ", 
+                    
+                    ToString[$CellContext`width$$ $CellContext`height$$ - \
+$CellContext`blueCount$$ - $CellContext`orangeCount$$]}], {
+                    FontSize -> 14, FontFamily -> "Arial"}], StandardForm]]}},
+                     DefaultBaseStyle -> "Column", 
+                    GridBoxAlignment -> {"Columns" -> {{Left}}}, 
+                    GridBoxItemSize -> {
+                    "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], 
+                    "Column"], ImageMargins -> 0]}}, AutoDelete -> False, 
+                 BaselinePosition -> {1, 1}, 
+                 GridBoxAlignment -> {"Columns" -> {{Left}}}, 
+                 GridBoxBackground -> {"Columns" -> {{Automatic}}}, 
+                 GridBoxItemSize -> {
+                  "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+                 GridBoxSpacings -> {
+                  "Columns" -> {{0.2}}, "Rows" -> {{0.5}}}]}, 
+              Dynamic[
+               TrueQ[Typeset`var$$]], Alignment -> Automatic, BaseStyle -> {},
+               BaselinePosition -> Baseline, DefaultBaseStyle -> "OpenerView",
+               ImageMargins -> 0, ImageSize -> Automatic], Deployed -> False, 
+             StripOnInput -> False], 
+            OpenerView[{
+              Framed[
+               Row[{
+                 Style[
+                 "Reset Parameters  ", {
+                  FontSize -> 14, FontFamily -> "Arial"}], 
+                 Button["Reset", 
+                  
+                  Dynamic[$CellContext`config$$ = 
+                    LatticeGasMC`latticeGasRandomConfiguration[$CellContext`\
+height$$, $CellContext`width$$, $CellContext`orangeCount$$, \
+$CellContext`blueCount$$]; $CellContext`graphic$$ = Row[{
+                    
+                    LatticeGasMC`drawLattice[$CellContext`config$$, ImageSize -> 
+                    800], 
+                    LatticeGasMC`populationPie[$CellContext`config$$]}]], 
+                  Background -> RGBColor[1, 1, 0.85]]}]], 
+              Column[{
+                Row[{
+                  Dynamic[
+                   $CellContext`numberedLabel[
+                   "Width", $CellContext`width$$, $CellContext`number]], 
+                  Manipulator[
+                   Dynamic[$CellContext`width$$], {50, 200, 1}]}], 
+                Row[{
+                  Dynamic[
+                   $CellContext`numberedLabel[
+                   "Height", $CellContext`height$$, $CellContext`number]], 
+                  Manipulator[
+                   Dynamic[$CellContext`height$$], {50, 200, 1}]}], 
+                Row[{
+                  Dynamic[
+                   $CellContext`numberedLabel[
+                   "Blue Count", $CellContext`blueCount$$, \
+$CellContext`number]], 
+                  Manipulator[
+                   Dynamic[$CellContext`blueCount$$], {1, 
+                    Dynamic[$CellContext`width$$ $CellContext`height$$], 
+                    1}]}], 
+                Row[{
+                  Dynamic[
+                   $CellContext`numberedLabel[
+                   "Orange Count", $CellContext`orangeCount$$, \
+$CellContext`number]], 
+                  Manipulator[
+                   Dynamic[$CellContext`orangeCount$$], {1, 
+                    
+                    Dynamic[$CellContext`width$$ $CellContext`height$$ - \
+$CellContext`blueCount$$], 1}]}], 
+                Dynamic[
+                 Style[
+                  StringJoin[{"Vacancy Count: ", 
+                    
+                    ToString[$CellContext`width$$ $CellContext`height$$ - \
+$CellContext`blueCount$$ - $CellContext`orangeCount$$]}], {
+                  FontSize -> 14, FontFamily -> "Arial"}]]}]}, False]], 
+           DynamicModuleValues :> {}], Setting[#, {0}]& ]},
+        "RowDefault"]},
+      {
+       DynamicBox[ToBoxes[
+         OpenerView[{
+           $CellContext`style["Controls"], 
+           Grid[{{
+              Tooltip[
+               $CellContext`style["Speed"], 
+               $CellContext`toolTipText["Speed"]], 
+              Slider[
+               Dynamic[$CellContext`speed$$], {1, 100, 5}], 
+              Dynamic[
+               $CellContext`style[
+                StringJoin[{"Temperature (", 
+                  ToString[$CellContext`temperature$$], ")"}]]], 
+              Manipulator[
+               Dynamic[$CellContext`temperature$$], {0.1, 5}]}, {
+              Tooltip[
+               Dynamic[
+                $CellContext`numberedLabel[
+                "Nearest Neighbor Coefficient", $CellContext`energyNearest$$, \
+$CellContext`numberPlusMinus]], 
+               $CellContext`toolTipText["Nearest Neighbor"]], 
+              Manipulator[
+               Dynamic[$CellContext`energyNearest$$], {-1, 1, 0.01}], 
+              Tooltip[
+               Dynamic[
+                $CellContext`numberedLabel[
+                "Next Neighbor", $CellContext`energyNextNearest$$, \
+$CellContext`numberPlusMinus]], 
+               $CellContext`toolTipText["Next Nearest Neighbor"]], 
+              Manipulator[
+               Dynamic[$CellContext`energyNextNearest$$], {-1, 1}]}, {
+              Tooltip[
+               Dynamic[
+                If[$CellContext`evaporationCoefficient$$ == 0, 
+                 $CellContext`disabledStyle["Chemical Potential Blue"], 
+                 Dynamic[
+                  $CellContext`numberedLabel[
+                  "Chemical Potential Blue", $CellContext`\[Mu]Blue$$, \
+$CellContext`numberPlusMinus]]]], 
+               $CellContext`toolTipText["\[Mu]Blue"]], 
+              Manipulator[
+               Dynamic[$CellContext`\[Mu]Blue$$], {-3, 3}, Enabled :> 
+               Dynamic[
+                 
+                 Or[$CellContext`evaporationCoefficient$$ != 
+                  0, $CellContext`mode$$ === 
+                  LatticeGasMC`latticeGasBulkExchangeSweep]]], 
+              Dynamic[
+               If[$CellContext`evaporationCoefficient$$ == 0, 
+                $CellContext`disabledStyle["Chemical Potential Orange"], 
+                Dynamic[
+                 $CellContext`numberedLabel[
+                 "Chemical Potential Orange", $CellContext`\[Mu]Orange$$, \
+$CellContext`numberPlusMinus]]]], 
+              Manipulator[
+               Dynamic[$CellContext`\[Mu]Orange$$], {-3, 3}, Enabled :> 
+               Dynamic[$CellContext`evaporationCoefficient$$ != 
+                  0 $CellContext`mode$$ === 
+                 LatticeGasMC`latticeGasBulkExchangeSweep]]}, {
+              Dynamic[
+               
+               If[$CellContext`mode$$ === 
+                LatticeGasMC`latticeGasMetropolisSweep, 
+                Dynamic[
+                 $CellContext`numberedLabel[
+                 "Evaporation Coefficient", \
+$CellContext`evaporationCoefficient$$, $CellContext`number]], 
+                $CellContext`style[" "]]], 
+              Manipulator[
+               Dynamic[$CellContext`evaporationCoefficient$$], {0, 1}, 
+               Enabled :> 
+               Dynamic[$CellContext`mode$$ == 
+                 LatticeGasMC`latticeGasMetropolisSweep]], 
+              Dynamic[
+               $CellContext`numberedLabel[
+               "Occupied Pair Flip Frequency", \
+$CellContext`occupiedSwitchFrequency$$, $CellContext`number]], 
+              Manipulator[
+               Dynamic[$CellContext`occupiedSwitchFrequency$$], {0, 1}]}}]}, 
+          True], StandardForm],
+        ImageSizeCache->{
+         876.6287890624999, {128.817, 12.792025923728943`}}]},
+      {
+       TemplateBox[{
+         StyleBox[
+         "\"View: \"", {FontSize -> 14, FontFamily -> "Arial"}, StripOnInput -> 
+          False], 
+         ButtonBox[
+          DynamicBox[
+           ToBoxes[
+            If[$CellContext`microstructureView$$, 
+             $CellContext`style["Microstructure"], 
+             $CellContext`style["Phase"]], StandardForm]], 
+          ButtonFunction :> ($CellContext`microstructureView$$ = 
+            Not[$CellContext`microstructureView$$]; $CellContext`graphic$$ = 
+            Which[$CellContext`microstructureView$$, 
+              Row[{
+                
+                LatticeGasMC`drawLattice[$CellContext`config$$, ImageSize -> 
+                 800], 
+                
+                LatticeGasMC`populationPie[$CellContext`config$$, ImageSize -> 
+                 200]}], True, 
+              
+              LatticeGasMC`latticeGasOrderParameterPlot[$CellContext`config$$,
+                6, ImageSize -> 300]]), ImageSize -> {100, 25}, Background :> 
+          Dynamic[
+            If[$CellContext`microstructureView$$, 
+             RGBColor[0.8, 1, 0.8], 
+             GrayLevel[0.9]]], Appearance -> Automatic, Evaluator -> 
+          Automatic, Method -> "Preemptive"]},
+        "RowDefault"]},
+      {
+       DynamicBox[ToBoxes[
+         Which[$CellContext`go$$, 
+          Increment[$CellContext`count$$]; {$CellContext`config$$, \
+$CellContext`statistics} = $CellContext`mode$$[$CellContext`config$$, \
+$CellContext`speed$$^2, "energyNearest" -> $CellContext`energyNearest$$, 
+             "energyNextNearest" -> $CellContext`energyNextNearest$$, 
+             "muBlue" -> $CellContext`\[Mu]Blue$$, 
+             "muOrange" -> $CellContext`\[Mu]Orange$$, "inverseTemperature" -> 
+             1/$CellContext`temperature$$, 
+             "exchangeProbability" -> $CellContext`evaporationCoefficient$$, 
+             "occupiedSwitchFrequency" -> \
+$CellContext`occupiedSwitchFrequency$$]; $CellContext`graphic$$ = 
+           Which[$CellContext`microstructureView$$, 
+             Row[{
+               
+               LatticeGasMC`drawLattice[$CellContext`config$$, ImageSize -> 
+                800], 
+               
+               LatticeGasMC`populationPie[$CellContext`config$$, ImageSize -> 
+                150]}], True, 
+             
+             LatticeGasMC`latticeGasOrderParameterPlot[$CellContext`config$$, 
+              6, ImageSize -> 200]], True, $CellContext`graphic$$], 
+         StandardForm],
+        ImageSizeCache->{800., {389.33990895890054`, 212.38977632068452`}}]}
+     },
+     DefaultBaseStyle->"Column",
+     GridBoxAlignment->{"Columns" -> {{Left}}},
+     GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+     GridBoxSpacings->{"Columns" -> {{Automatic}}, "Rows" -> {{2}}}],
+    "Column"],
+   DynamicModuleValues:>{}],
+  StripOnInput->False]], "Output",
+ CellChangeTimes->{4.001144055206769*^9, 4.0011443471133432`*^9, 
+  4.0011445734664583`*^9},
+ CellLabel->"Out[13]=",ExpressionUUID->"ccc85eea-a921-4823-b0eb-afb6f653b37f"]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -814,8 +1639,7 @@ Cell[BoxData[
      RowBox[{
       RowBox[{"-", "1"}], ",", "1", ",", "1"}], "}"}]}], "}"}]}]], "Input",
  CellChangeTimes->{{3.993734566256562*^9, 3.993734599216672*^9}},
- CellLabel->
-  "In[325]:=",ExpressionUUID->"168b0b7c-9bcb-42f1-bc2b-3dd746d1bbf5"],
+ CellLabel->"In[9]:=",ExpressionUUID->"168b0b7c-9bcb-42f1-bc2b-3dd746d1bbf5"],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -830,9 +1654,8 @@ Cell[BoxData[
    RowBox[{"{", 
     RowBox[{
      RowBox[{"-", "1"}], ",", "1", ",", "1"}], "}"}]}], "}"}]], "Output",
- CellChangeTimes->{3.993734601738316*^9},
- CellLabel->
-  "Out[325]=",ExpressionUUID->"3e856e85-7a39-4a25-a5b0-bc5aea71d29b"]
+ CellChangeTimes->{3.993734601738316*^9, 4.001144347147073*^9},
+ CellLabel->"Out[9]=",ExpressionUUID->"70776182-5893-496e-af57-e2e013409b9f"]
 }, Open  ]],
 
 Cell[BoxData[
@@ -842,16 +1665,23 @@ Cell[BoxData[
     RowBox[{"4", " ", "enn"}], " ", "-", " ", 
     RowBox[{"4", " ", "ennn"}]}]}], ";"}]], "Input",
  CellChangeTimes->{{3.993734631890037*^9, 3.993734668309393*^9}},
- CellLabel->
-  "In[326]:=",ExpressionUUID->"8856013b-4cdf-450c-ad05-eb0b55759598"],
+ CellLabel->"In[10]:=",ExpressionUUID->"8856013b-4cdf-450c-ad05-eb0b55759598"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"stripe", "=", " ", 
   RowBox[{
    RowBox[{"-", "4"}], " ", "enn"}]}]], "Input",
- CellChangeTimes->{{3.993734671362081*^9, 
-  3.9937347068698273`*^9}},ExpressionUUID->"d276a33d-a7e0-42d0-bde9-\
-18e179efeef6"],
+ CellChangeTimes->{{3.993734671362081*^9, 3.9937347068698273`*^9}},
+ CellLabel->"In[11]:=",ExpressionUUID->"d276a33d-a7e0-42d0-bde9-18e179efeef6"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"-", "4"}], " ", "enn"}]], "Output",
+ CellChangeTimes->{4.0011443471714687`*^9},
+ CellLabel->"Out[11]=",ExpressionUUID->"a9ef5b9f-d1d6-43b2-92e5-3f5f7dab8291"]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -865,23 +1695,21 @@ Cell[BoxData[
     RowBox[{
      RowBox[{"-", "4"}], " ", "enn"}]}], ",", " ", "ennn"}], "]"}]], "Input",
  CellChangeTimes->{{3.993734724887436*^9, 3.993734740735735*^9}},
- CellLabel->
-  "In[327]:=",ExpressionUUID->"406731fc-027b-4062-bdeb-2badf5e1eab6"],
+ CellLabel->"In[12]:=",ExpressionUUID->"406731fc-027b-4062-bdeb-2badf5e1eab6"],
 
 Cell[BoxData[
  RowBox[{"{", 
   RowBox[{"{", 
    RowBox[{"ennn", "\[Rule]", 
     RowBox[{"2", " ", "enn"}]}], "}"}], "}"}]], "Output",
- CellChangeTimes->{3.993734741465803*^9},
- CellLabel->
-  "Out[327]=",ExpressionUUID->"b233a56b-8699-4c50-832f-f8f07cbc96c3"]
+ CellChangeTimes->{3.993734741465803*^9, 4.001144347186976*^9},
+ CellLabel->"Out[12]=",ExpressionUUID->"100dcfd2-ba5a-4836-8c5a-b3541b6b40c6"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
 },
-WindowSize->{1058, 974},
-WindowMargins->{{155, Automatic}, {Automatic, 25}},
+WindowSize->{1518, 974},
+WindowMargins->{{0, Automatic}, {13, Automatic}},
 FrontEndVersion->"15.0 for Mac OS X ARM (64-bit) (July 2, 2026)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"dcfbe1ac-0e24-4d79-a314-ade8eb725c9b"
@@ -897,35 +1725,50 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[554, 20, 175, 3, 29, "Input",ExpressionUUID->"8183f33f-1ba0-4ab4-8fdd-9f15cb768ae2"],
-Cell[732, 25, 325, 9, 45, "Input",ExpressionUUID->"69260781-064c-4425-8207-365194b7f6e8",
+Cell[CellGroupData[{
+Cell[576, 22, 161, 2, 53, "Subsection",ExpressionUUID->"29974920-e56b-4d34-bfd7-cd71f6f92af1"],
+Cell[CellGroupData[{
+Cell[762, 28, 1804, 41, 310, "Input",ExpressionUUID->"69260781-064c-4425-8207-365194b7f6e8",
  InitializationCell->True],
+Cell[2569, 71, 519, 12, 26, "Message",ExpressionUUID->"f756d503-95d1-4134-a720-04d98f943d9d"],
 Cell[CellGroupData[{
-Cell[1082, 38, 283, 6, 114, "Chapter",ExpressionUUID->"6052faba-778c-4218-b7c0-6d90a40b2c4c"],
+Cell[3113, 87, 207, 4, 23, "Echo",ExpressionUUID->"6c93657f-c3cf-44d8-ac64-93be9e9276d5"],
+Cell[3323, 93, 162, 3, 23, "Echo",ExpressionUUID->"c153930f-d29e-4371-aa8b-aba1e3af95e0"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
 Cell[CellGroupData[{
-Cell[1390, 48, 192, 4, 53, "Subsection",ExpressionUUID->"c45b0706-26ea-47a4-a447-7e867e08520c",
+Cell[3546, 103, 283, 6, 114, "Chapter",ExpressionUUID->"6052faba-778c-4218-b7c0-6d90a40b2c4c"],
+Cell[CellGroupData[{
+Cell[3854, 113, 192, 4, 53, "Subsection",ExpressionUUID->"c45b0706-26ea-47a4-a447-7e867e08520c",
  InitializationGroup->True],
-Cell[1585, 54, 1018, 26, 111, "Input",ExpressionUUID->"7e632314-bb77-46b9-af53-8f3a8e5f4be4",
+Cell[4049, 119, 1012, 25, 111, "Input",ExpressionUUID->"7e632314-bb77-46b9-af53-8f3a8e5f4be4",
  InitializationGroup->True],
-Cell[2606, 82, 681, 16, 29, "Input",ExpressionUUID->"7903df13-ddee-440e-838e-81be6afd5234",
+Cell[5064, 146, 675, 15, 29, "Input",ExpressionUUID->"7903df13-ddee-440e-838e-81be6afd5234",
  InitializationGroup->True],
-Cell[3290, 100, 1300, 25, 213, "Input",ExpressionUUID->"719616f6-8359-4bf9-9e25-221f11df6e9e",
+Cell[5742, 163, 1294, 24, 213, "Input",ExpressionUUID->"719616f6-8359-4bf9-9e25-221f11df6e9e",
  InitializationGroup->True],
-Cell[4593, 127, 982, 28, 70, "Input",ExpressionUUID->"bf4bccb9-dbb2-4845-800b-e612e338462d",
+Cell[7039, 189, 976, 27, 70, "Input",ExpressionUUID->"bf4bccb9-dbb2-4845-800b-e612e338462d",
  InitializationGroup->True]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5612, 160, 166, 3, 53, "Subsection",ExpressionUUID->"fe7907fc-e073-42f5-a421-2695c3bf571e"],
-Cell[5781, 165, 33637, 632, 2970, "Input",ExpressionUUID->"523a307e-a425-4e10-8581-d5280555b2e7"],
+Cell[8052, 221, 166, 3, 53, "Subsection",ExpressionUUID->"fe7907fc-e073-42f5-a421-2695c3bf571e"],
 Cell[CellGroupData[{
-Cell[39443, 801, 538, 16, 29, "Input",ExpressionUUID->"168b0b7c-9bcb-42f1-bc2b-3dd746d1bbf5"],
-Cell[39984, 819, 469, 15, 33, "Output",ExpressionUUID->"3e856e85-7a39-4a25-a5b0-bc5aea71d29b"]
+Cell[8243, 228, 34021, 640, 3032, "Input",ExpressionUUID->"523a307e-a425-4e10-8581-d5280555b2e7"],
+Cell[42267, 870, 35962, 751, 910, "Output",ExpressionUUID->"ccc85eea-a921-4823-b0eb-afb6f653b37f"]
 }, Open  ]],
-Cell[40468, 837, 321, 8, 29, "Input",ExpressionUUID->"8856013b-4cdf-450c-ad05-eb0b55759598"],
-Cell[40792, 847, 231, 6, 29, "Input",ExpressionUUID->"d276a33d-a7e0-42d0-bde9-18e179efeef6"],
 Cell[CellGroupData[{
-Cell[41048, 857, 418, 11, 29, "Input",ExpressionUUID->"406731fc-027b-4062-bdeb-2badf5e1eab6"],
-Cell[41469, 870, 258, 7, 33, "Output",ExpressionUUID->"b233a56b-8699-4c50-832f-f8f07cbc96c3"]
+Cell[78266, 1626, 533, 15, 29, "Input",ExpressionUUID->"168b0b7c-9bcb-42f1-bc2b-3dd746d1bbf5"],
+Cell[78802, 1643, 486, 14, 33, "Output",ExpressionUUID->"70776182-5893-496e-af57-e2e013409b9f"]
+}, Open  ]],
+Cell[79303, 1660, 317, 7, 70, "Input",ExpressionUUID->"8856013b-4cdf-450c-ad05-eb0b55759598"],
+Cell[CellGroupData[{
+Cell[79645, 1671, 250, 5, 29, "Input",ExpressionUUID->"d276a33d-a7e0-42d0-bde9-18e179efeef6"],
+Cell[79898, 1678, 193, 4, 33, "Output",ExpressionUUID->"a9ef5b9f-d1d6-43b2-92e5-3f5f7dab8291"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[80128, 1687, 414, 10, 29, "Input",ExpressionUUID->"406731fc-027b-4062-bdeb-2badf5e1eab6"],
+Cell[80545, 1699, 276, 6, 33, "Output",ExpressionUUID->"100dcfd2-ba5a-4836-8c5a-b3541b6b40c6"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
